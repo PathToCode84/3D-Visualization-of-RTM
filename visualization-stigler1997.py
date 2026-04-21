@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 rho = 0.5
 x_plane = 1.0 # where does plane cut
-z_cut = 0.12 # horizontal cut height
+z_cut = 0.12
 
 # Grid
 x = np.linspace(-3, 3, 100)
@@ -25,7 +25,7 @@ fig = go.Figure()
 
 # Surface
 fig.add_trace(
-    go.Surface(x=X, y=Y, z=Z_cut, opacity=1, 
+    go.Surface(x=X, y=Y, z=Z_cut, opacity=1, #change to z=Z for full bell
     colorscale="Teal",
     lighting=dict(ambient=0.7, diffuse=0.9, specular=0.2, roughness=0.8),
     lightposition=dict(x=100, y=200, z=300),
@@ -65,14 +65,16 @@ fig.add_trace(go.Surface(
     colorscale=[[0, "#7a0019"], [1, "#7a0019"]]
 ))
 
-# Regressionslinie
+# for Regression line
 x_line = np.linspace(-3, 3, 50)
 y_line = rho * x_line # because slope of regression line = cov(X,Y)/Var(X) = rho 
 # (because X,Y standardized) (normal equations)
 z_line = (1/(2*np.pi*np.sqrt(1-rho**2))) * np.exp(
     -(x_line**2 - 2*rho*x_line*y_line + y_line**2)/(2*(1-rho**2)))
 z_line_cut = np.where(z_line <= z_cut, z_line, np.nan)
+# where do these spikes come from?
 
+# Regression line
 fig.add_trace(go.Scatter3d(
     x=x_line, y=y_line, z=z_line_cut,
     mode='lines', line=dict(width=6, color ="black")))
