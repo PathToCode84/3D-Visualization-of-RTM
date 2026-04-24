@@ -1,13 +1,19 @@
 ## What is regression toward the Mean
 # reproducting figue of Yudkin1996
 
+setwd("/Users/mia8425/Documents/Studium/6. Semester SS 2026/SE Seminar")
+pdf("figure-RTM.pdf", width = 7, height = 5)
+
 # Set up x range
 x <- seq(0, 10, length.out = 500)
 
 # Population distribution
 mu_pop <- 5
-sd_pop <- 1.5
+sd_pop <- 1.3
 y_pop <- dnorm(x, mu_pop, sd_pop)
+
+# Reduce margins: bottom, left, top, right
+par(mar = c(2, 0.5, 0.5, 0.5))
 
 # Set up empty plot (population drawn later, on top of stickers)
 plot(x, y_pop, type = "n",
@@ -20,7 +26,8 @@ axis(1, at = mu_pop, labels = "Mean", tick = FALSE)
 
 # Add individual distributions
 set.seed(420)
-n_ind <- 100
+
+n_ind <- 75
 
 scale <- 0.025  # shrink individual curves relative to population
 
@@ -62,3 +69,15 @@ text(6.5, max(y_pop), "cut off", pos = 4)
 text(mu_A, max(res_A$y_top), "A", pos = 3)
 text(mu_B, max(res_B$y_top), "B", pos = 3)
 
+# Legend
+legend("topleft",
+       legend = c("Population distribution",
+                  "Individual distribution",
+                  "Individuals A,B"),
+       lty    = c(1, 2, 2),
+       lwd    = c(3, 1, 2),
+       col    = c("black", "gray60", "black"),
+       bty    = "n",
+       seg.len = 2)
+
+dev.off()
