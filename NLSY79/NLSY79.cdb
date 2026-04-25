@@ -1,0 +1,455 @@
+C00001.00    [CPUBID]                                       Survey Year: XRND
+  PRIMARY VARIABLE
+
+             ID CODE OF CHILD
+ 
+PUBLIC IDENTIFICATION CODE OF CHILD
+ 
+UNIVERSE: All biological children of NLSY79 mothers, regardless of age.
+ 
+   11551           1 TO 9999999: See Min & Max values below for range as of this
+                          release
+  -------
+   11551
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   11551      MISSING(-7)       0
+ 
+Min:            201        Max:        1267501        Mean:           600544.28
+ 
+Lead In: None.
+Default Next Question: C00002.00
+--------------------------------------------------------------------------------
+C00002.00    [MPUBID]                                       Survey Year: XRND
+  PRIMARY VARIABLE
+
+             ID CODE OF MOTHER OF CHILD
+ 
+PUBLIC IDENTIFICATION CODE OF MOTHER OF CHILD
+ 
+UNIVERSE: All biological children of NLSY79 mothers, regardless of age.
+ 
+NOTE: SEE YOUTH REFERENCE NUMBER R(    1.)
+ 
+   11551           1 TO 12686: NLSY79 Public ID
+  -------
+   11551
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   11551      MISSING(-7)       0
+ 
+Min:              2        Max:          12675        Mean:             6005.42
+ 
+Lead In: C00001.00[Default]
+Default Next Question: C00003.00
+--------------------------------------------------------------------------------
+C00054.00    [CSEX]                                         Survey Year: XRND
+  PRIMARY VARIABLE
+
+             SEX OF CHILD
+ 
+SEX OF CHILD
+ 
+    5898       1 MALE
+    5651       2 FEMALE
+  -------
+   11549
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)       2
+TOTAL =========>   11551      MISSING(-7)       0
+ 
+Min:              1        Max:              2        Mean:                1.49
+ 
+Lead In: C00053.00[Default]
+Default Next Question: C00055.00
+--------------------------------------------------------------------------------
+C00057.00    [CYRB]                                         Survey Year: XRND
+  PRIMARY VARIABLE
+
+             DATE OF BIRTH OF CHILD - YEAR
+ 
+DATE OF BIRTH OF CHILD - YEAR
+ 
+    1223        1970 TO 1978: < before 1979
+     528        1979
+     607        1980
+     714        1981
+     703        1982
+     715        1983
+     657        1984
+     676        1985
+     618        1986
+     621        1987
+     585        1988
+     629        1989
+     495        1990
+     424        1991
+     402        1992
+     348        1993
+     303        1994
+     245        1995
+     229        1996
+     216        1997
+     156        1998
+     129        1999
+     100        2000
+      81        2001
+      48        2002
+      34        2003
+      24        2004
+      15        2005
+      11        2006
+       4        2007
+       3        2008
+       3        2009
+       2        2010
+       2        2011
+       1        2014
+  -------
+   11551
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   11551      MISSING(-7)       0
+ 
+Min:           1970        Max:           2014        Mean:              1986.1
+ 
+Lead In: C00055.00[Default]
+Default Next Question: C00057.01
+--------------------------------------------------------------------------------
+C36011.00    [CSAGE2008]                                    Survey Year: 2008
+  PRIMARY VARIABLE
+
+             AGE OF CHILD (IN MONTHS) AT CHILD ASSESSMENT DATE, CHILD SUPPLEMENT
+ 
+AGE OF CHILD (IN MONTHS) AT CHILD ASSESSMENT DATE, CHILD SUPPLEMENT
+ 
+      10          36 TO 47: 36-47 MONTHS
+      22          48 TO 59: 48-59 MONTHS
+      42          60 TO 71: 60-71 MONTHS
+      43          72 TO 83: 72-83 MONTHS
+      73          84 TO 95: 84-95 MONTHS
+     101          96 TO 107: 96-107 MONTHS
+     108         108 TO 119: 108-119 MONTHS
+     152         120 TO 131: 120-131 MONTHS
+     158         132 TO 143: 132-143 MONTHS
+     183         144 TO 155: 144-155 MONTHS
+     198         156 TO 167: 156-167 MONTHS
+     110         168 TO 179: 168-179 MONTHS
+  -------
+    1200
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)     123
+TOTAL =========>    1323      MISSING(-7)   10228
+ 
+Min:             40        Max:            178        Mean:              129.99
+ 
+Lead In: C36010.00[Default]
+Default Next Question: C36012.00
+--------------------------------------------------------------------------------
+C38979.00    [MS-HLTH-HGT-TOTALINCHES]                      Survey Year: 2008
+  PRIMARY VARIABLE
+
+             CHILD HEALTH: CHILD'S HEIGHT - INCHES ONLY
+ 
+(TO MOTHER: I'd like to find out how tall [Child First Name] is. [Would you 
+prefer to measure <him/her> yourself or shall I do it?/<no text>])
+ 
+INTERVIEWER: RECORD HEIGHT IN TOTAL INCHES.
+ 
+.
+ 
+NOTE: In R22-2006, the Mother Supplement was fully integrated into the main 
+Youth questionnaire. Mothers completed an MS for each age-eligible child.  MS 
+assessment items in the Child db are child-based versions of the direct pick-ups
+from the mother's record.
+ 
+ 
+ 
+        TOTAL INCHES
+ 
+       1           0 TO 11: INCHES
+      12          24 TO 35: INCHES
+      37          36 TO 47: INCHES
+      44          48 TO 59: INCHES
+  -------
+      94
+ 
+Refusal(-1)            1
+Don't Know(-2)         2
+TOTAL =========>      97      MISSING(-7)   11454
+ 
+Min:              1        Max:             58        Mean:               44.05
+ 
+Lead In: C38976.00[2:2]
+Default Next Question: C38980.00
+--------------------------------------------------------------------------------
+C38988.00    [MS-HLTH-WGT-LBSONLY]                          Survey Year: 2008
+  PRIMARY VARIABLE
+
+             CHILD HEALTH: CHILD'S WEIGHT - POUNDS
+ 
+(TO MOTHER: I'd like to find out [Child First Name]'s weight. [Would you prefer 
+to weigh <him/her> yourself or shall I do it?/<no text>])
+ 
+INTERVIEWER: RECORD WEIGHT IN POUNDS. BE SURE CHILD IS NOT WEARING SHOES OR 
+HEAVY OUTER GARMENTS.
+ 
+.
+ 
+NOTE: In R22-2006, the Mother Supplement was fully integrated into the main 
+Youth questionnaire. Mothers completed an MS for each age-eligible child.  MS 
+assessment items in the Child db are child-based versions of the direct pick-ups
+from the mother's record.
+ 
+ 
+ 
+        LBS.
+ 
+       4          10 TO 19: lbs.
+      11          20 TO 29: lbs.
+      49          30 TO 39: lbs.
+      89          40 TO 49: lbs.
+      88          50 TO 59: lbs.
+     135          60 TO 69: lbs.
+     124          70 TO 79: lbs.
+     140          80 TO 89: lbs.
+     132          90 TO 99: lbs.
+     138         100 TO 109: lbs.
+      95         110 TO 119: lbs.
+      93         120 TO 129: lbs.
+      51         130 TO 139: lbs.
+      37         140 TO 149: lbs.
+      98         150 TO 999: lbs.
+  -------
+    1284
+ 
+Refusal(-1)            1
+Don't Know(-2)        24
+TOTAL =========>    1309      MISSING(-7)   10242
+ 
+Min:             10        Max:            350        Mean:               91.87
+ 
+Lead In: C38987.00[Default]
+Default Next Question: C38991.00
+--------------------------------------------------------------------------------
+C39811.00    [CSAGE2010]                                    Survey Year: 2010
+  PRIMARY VARIABLE
+
+             AGE OF CHILD (IN MONTHS) AT CHILD ASSESSMENT DATE, CHILD SUPPLEMENT
+ 
+AGE OF CHILD (IN MONTHS) AT CHILD ASSESSMENT DATE, CHILD SUPPLEMENT
+ 
+       8          48 TO 59: 48-59 MONTHS
+      18          60 TO 71: 60-71 MONTHS
+      17          72 TO 83: 72-83 MONTHS
+      45          84 TO 95: 84-95 MONTHS
+      42          96 TO 107: 96-107 MONTHS
+      71         108 TO 119: 108-119 MONTHS
+      93         120 TO 131: 120-131 MONTHS
+     107         132 TO 143: 132-143 MONTHS
+     146         144 TO 155: 144-155 MONTHS
+     158         156 TO 167: 156-167 MONTHS
+      84         168 TO 179: 168-179 MONTHS
+  -------
+     789
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)      86
+TOTAL =========>     875      MISSING(-7)   10676
+ 
+Min:             55        Max:            178        Mean:              136.33
+ 
+Lead In: C39810.00[Default]
+Default Next Question: C39812.00
+--------------------------------------------------------------------------------
+C40129.00    [HLTH-HGT-TOTALINCHES]                         Survey Year: 2010
+  PRIMARY VARIABLE
+
+             CHILD HEALTH: CHILD'S HEIGHT - INCHES ONLY
+ 
+(TO MOTHER: I'd like to find out how tall [Child First Name] is. [Would you 
+prefer to measure <him/her> yourself or shall I do it?/<no text>])  INTERVIEWER:
+RECORD HEIGHT IN TOTAL INCHES.
+ 
+ 
+        TOTAL INCHES
+ 
+      10          36 TO 47: INCHES
+      39          48 TO 59: INCHES
+       8          60 TO 71: INCHES
+  -------
+      57
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      57      MISSING(-7)   11494
+ 
+Min:             40        Max:             66        Mean:               53.12
+ 
+Lead In: C40126.00[2:2]
+Default Next Question: C40130.00
+--------------------------------------------------------------------------------
+C40137.00    [HLTH-WGT-LBSONLY]                             Survey Year: 2010
+  PRIMARY VARIABLE
+
+             CHILD HEALTH: CHILD'S WEIGHT - POUNDS
+ 
+(TO MOTHER: I'd like to find out [Child First Name]'s weight. [Would you prefer 
+to weigh <him/her> yourself or shall I do it?/<no text>])  INTERVIEWER: RECORD 
+WEIGHT IN POUNDS. BE SURE CHILD IS NOT WEARING SHOES OR HEAVY OUTER GARMENTS.
+ 
+ 
+        LBS.
+ 
+       5          30 TO 39: lbs.
+      42          40 TO 49: lbs.
+      52          50 TO 59: lbs.
+      47          60 TO 69: lbs.
+      74          70 TO 79: lbs.
+      69          80 TO 89: lbs.
+      85          90 TO 99: lbs.
+      85         100 TO 109: lbs.
+      88         110 TO 119: lbs.
+      60         120 TO 129: lbs.
+      53         130 TO 139: lbs.
+      38         140 TO 149: lbs.
+      86         150 TO 999: lbs.
+  -------
+     784
+ 
+Refusal(-1)            0
+Don't Know(-2)         4
+TOTAL =========>     788      MISSING(-7)   10763
+ 
+Min:             30        Max:            297        Mean:              104.09
+ 
+Lead In: C40136.00[Default]
+Default Next Question: C40140.00
+--------------------------------------------------------------------------------
+C55248.00    [CSAGE2012]                                    Survey Year: 2012
+  PRIMARY VARIABLE
+
+             AGE OF CHILD (IN MONTHS) AT CHILD ASSESSMENT DATE, CHILD SUPPLEMENT
+ 
+AGE OF CHILD (IN MONTHS) AT CHILD ASSESSMENT DATE, CHILD SUPPLEMENT
+ 
+       4          60 TO 71: 60-71 MONTHS
+      10          72 TO 83: 72-83 MONTHS
+      12          84 TO 95: 84-95 MONTHS
+      21          96 TO 107: 96-107 MONTHS
+      25         108 TO 119: 108-119 MONTHS
+      38         120 TO 131: 120-131 MONTHS
+      62         132 TO 143: 132-143 MONTHS
+      69         144 TO 155: 144-155 MONTHS
+      96         156 TO 167: 156-167 MONTHS
+     112         168 TO 179: 168-179 MONTHS
+      19         180 TO 191: 180-191 MONTHS
+  -------
+     468
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+Invalid Skip(-3)      40
+TOTAL =========>     508      MISSING(-7)   11043
+ 
+Min:             61        Max:            185        Mean:              147.79
+ 
+Lead In: C55247.00[Default]
+Default Next Question: C55249.00
+--------------------------------------------------------------------------------
+C55569.00    [HLTH-HGT-TOTALINCHES]                         Survey Year: 2012
+  PRIMARY VARIABLE
+
+             CHILD HEALTH: CHILD'S HEIGHT - INCHES ONLY
+ 
+(TO MOTHER: I'd like to find out how tall [Child First Name] is. [Would you 
+prefer to measure <him/her> yourself or shall I do it?/<no text>])  INTERVIEWER:
+RECORD HEIGHT IN TOTAL INCHES.
+ 
+ 
+        TOTAL INCHES
+ 
+       1          12 TO 23: INCHES
+       2          36 TO 47: INCHES
+       8          48 TO 59: INCHES
+       6          60 TO 71: INCHES
+       1          72 TO 83: INCHES
+  -------
+      18
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>      18      MISSING(-7)   11533
+ 
+Min:             22        Max:             72        Mean:               54.44
+ 
+Lead In: C55565.00[2:2]
+Default Next Question: C55570.00
+--------------------------------------------------------------------------------
+C55577.00    [HLTH-WGT-LBSONLY]                             Survey Year: 2012
+  PRIMARY VARIABLE
+
+             CHILD HEALTH: CHILD'S WEIGHT - POUNDS
+ 
+(TO MOTHER: I'd like to find out [Child First Name]'s weight. [Would you prefer 
+to weigh <him/her> yourself or shall I do it?/<no text>])  INTERVIEWER: RECORD 
+WEIGHT IN POUNDS. BE SURE CHILD IS NOT WEARING SHOES OR HEAVY OUTER GARMENTS.
+ 
+ 
+        LBS.
+ 
+       1          30 TO 39: lbs.
+      13          40 TO 49: lbs.
+      14          50 TO 59: lbs.
+      34          60 TO 69: lbs.
+      33          70 TO 79: lbs.
+      31          80 TO 89: lbs.
+      48          90 TO 99: lbs.
+      46         100 TO 109: lbs.
+      42         110 TO 119: lbs.
+      37         120 TO 129: lbs.
+      42         130 TO 139: lbs.
+      33         140 TO 149: lbs.
+      87         150 TO 999: lbs.
+  -------
+     461
+ 
+Refusal(-1)            0
+Don't Know(-2)         6
+TOTAL =========>     467      MISSING(-7)   11084
+ 
+Min:             33        Max:            292        Mean:               116.7
+ 
+Lead In: C55575.00[Default]
+Default Next Question: C55580.00
+--------------------------------------------------------------------------------
+Y22670.00    [VERSION_R29]                                  Survey Year: XRND
+  PRIMARY VARIABLE
+
+             VERSION_R29 CHILD/YOUNG ADULT
+ 
+This variable identifies the release version of the current NLSY79 Child/Young 
+Adult data set, This information allows User Services to identify the release 
+version used by a researcher who is asking a question and to access past 
+versions of the data if necessary.
+ 
+   11551         532
+  -------
+   11551
+ 
+Refusal(-1)            0
+Don't Know(-2)         0
+TOTAL =========>   11551      MISSING(-7)       0
+ 
+Min:            532        Max:            532        Mean:                 532
+ 
+Lead In: Y12053.00[Default]
+Default Next Question: Y12054.00
