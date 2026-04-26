@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: stigler-1997-visualization
+    runtime: static
+    buildCommand: pip install -r requirements.txt && python visualization-stigler1997.py
+    staticPublishPath: ./public

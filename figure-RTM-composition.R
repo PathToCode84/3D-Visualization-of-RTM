@@ -78,6 +78,6 @@ legend("topleft",
        lwd    = c(3, 1, 2),
        col    = c("black", "gray60", "black"),
        bty    = "n",
-       seg.len = 2)
+       seg.len = 1.5)
 
 dev.off()

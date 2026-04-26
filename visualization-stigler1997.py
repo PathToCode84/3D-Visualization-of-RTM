@@ -1,5 +1,4 @@
-# Notes because I'm a student
-# activate myvenv with cmd . myvenv/bin/activate
+from pathlib import Path
 
 import numpy as np
 import plotly.graph_objects as go
@@ -10,7 +9,7 @@ x_plane_values = np.concatenate((np.linspace(-3, -0.25, 12), np.linspace(0.25, 3
 # where 0.18377 is maximum
 
 # Grid
-resolution = 150
+resolution = 100
 x = np.linspace(-3, 3, resolution)
 y = np.linspace(-3, 3, resolution)
 X, Y = np.meshgrid(x, y)
@@ -330,6 +329,12 @@ fig.update_layout(
         )
     ]
 )
-
-
-fig.show()
+output_path = Path("public/index.html")
+output_path.parent.mkdir(parents=True, exist_ok=True)
+fig.write_html(
+    output_path,
+    include_plotlyjs=True,
+    full_html=True,
+    config={"responsive": True},
+)
+print(f"Wrote static site to {output_path}")
