@@ -1,7 +1,9 @@
 # 3D-Visualization-of-RTM
-Was the main purpose of this reposidtory. 
+Is the main purpose of this repository. Look at www.sofiajust.com to look at the 3D plot of RTM. It's interactive :)
 
-But I will include other code that I use in my bachelor thesis as well.
+But it includes other code that I use in my bachelor thesis as well.
+* The first other code file is an illustration of RTM on a group level in R
+* The other R file analyses bmi z-scores of elementary school children using the National Longitudial Survey 1979 (NLSY79) data
 
 ## Render static site
 
