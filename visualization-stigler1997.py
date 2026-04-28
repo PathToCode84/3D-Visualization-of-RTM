@@ -1,10 +1,12 @@
 ####################################################################
 # This code builds an interactive 3d representation of regression 
 # toward the mean with the help of plotly
-# The interactive graphic is deployed at https://rtm.sofiajust.com
+
+# run this code and open up the index.html file that it creates
+
+# The interactive graphic is deployed at (url not anonymous)
 # The code for this project (incl. requirements and deployment spec-
-# ific files (render)) can also be found on github
-# https://github.com/PathToCode84/3D-Visualization-of-RTM
+# ific files (render)) can also be found on github (not anonymous)
 ####################################################################
 
 from pathlib import Path

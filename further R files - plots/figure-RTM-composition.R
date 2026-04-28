@@ -1,7 +1,7 @@
 ## What is regression toward the Mean
 # reproducing figure 1 of Yudkin1996
 
-setwd("/Users/mia8425/Documents/Studium/6. Semester SS 2026/SE Seminar")
+setwd("")
 pdf("figure-RTM.pdf", width = 7, height = 5)
 
 x <- seq(0, 10, length.out = 500)

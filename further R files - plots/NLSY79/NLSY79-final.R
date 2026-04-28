@@ -1,5 +1,5 @@
 # Set working directory
-setwd("/Users/mia8425/Documents/Studium/6. Semester SS 2026/SE Seminar/further R files - plots/NLSY79")
+setwd("")
 pdf("NLSY79-plot.pdf", width = 8, height = 5)
 
 # downloaded from https://www.nlsinfo.org/investigator/pages/search
