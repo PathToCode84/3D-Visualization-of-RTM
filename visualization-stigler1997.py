@@ -2,10 +2,12 @@
 # This code builds an interactive 3d representation of regression 
 # toward the mean with the help of plotly
 
-# run this code and open up the index.html file that it creates
+# To view plot locally, run this code and open up the index.html 
+# file that it creates
 
 # The interactive graphic is deployed at 
 # https://threed-visualization-of-rtm.onrender.com
+
 # The code for this project (incl. requirements and deployment spec-
 # ific files (render)) can also be found on github (not anonymous)
 ####################################################################
@@ -659,12 +661,12 @@ fig.update_layout(
             y=1.25,
             buttons=[
                 dict(
-                    label="Slices an",
+                    label="include slices",
                     method="skip",
                     args=[True],
                 ),
                 dict(
-                    label="Slices aus",
+                    label="exlucde slices",
                     method="skip",
                     args=[False],
                 ),
