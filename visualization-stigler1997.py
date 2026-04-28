@@ -1,3 +1,12 @@
+####################################################################
+# This code builds an interactive 3d representation of regression 
+# toward the mean with the help of plotly
+# The interactive graphic is deployed at https://rtm.sofiajust.com
+# The code for this project (incl. requirements and deployment spec-
+# ific files (render)) can also be found on github
+# https://github.com/PathToCode84/3D-Visualization-of-RTM
+####################################################################
+
 from pathlib import Path
 import json
 import math
@@ -6,8 +15,8 @@ import numpy as np
 import plotly.graph_objects as go
 
 # default values
-rho = 0.5 
-x_plane = 1.5 # = cut-off points
+rho = 0.2
+x_plane = 1 # = cut-off points
 # range of x_plane and rho
 x_plane_values = np.linspace(0, 3, 25)
 rho_values = np.linspace(-0.9, 0.9, 19)

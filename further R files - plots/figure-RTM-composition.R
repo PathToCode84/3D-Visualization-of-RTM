@@ -1,13 +1,11 @@
 ## What is regression toward the Mean
-# reproducting figue of Yudkin1996
+# reproducing figure 1 of Yudkin1996
 
 setwd("/Users/mia8425/Documents/Studium/6. Semester SS 2026/SE Seminar")
 pdf("figure-RTM.pdf", width = 7, height = 5)
 
-# Set up x range
 x <- seq(0, 10, length.out = 500)
 
-# Population distribution
 mu_pop <- 5
 sd_pop <- 1.3
 y_pop <- dnorm(x, mu_pop, sd_pop)
@@ -15,7 +13,7 @@ y_pop <- dnorm(x, mu_pop, sd_pop)
 # Reduce margins: bottom, left, top, right
 par(mar = c(2, 0.5, 0.5, 0.5))
 
-# Set up empty plot (population drawn later, on top of stickers)
+# Set up empty plot
 plot(x, y_pop, type = "n",
      ylim = c(0, max(y_pop) * 1.3),
      xlab = "", ylab = "",
@@ -29,7 +27,7 @@ set.seed(420)
 
 n_ind <- 75
 
-scale <- 0.025  # shrink individual curves relative to population
+scale <- 0.025  # size of individual dist relative to pop dist
 
 sd_ind <- 0.3  # individual within-person SD 
 
@@ -50,26 +48,24 @@ for(i in 1:n_ind){
   draw_individual(mu_i)
 }
 
-# Highlight individual A (below mean)
+# individual A (below mean)
 mu_A <- 6
 res_A <- draw_individual(mu_A, lwd = 2, col = "black", offset = 0.12)
 
-# Highlight individual B (above mean)
+# individual B (above mean)
 mu_B <- 7
 res_B <- draw_individual(mu_B, lwd = 2, col = "black")
 
-# Draw population curve on top of stickers
+# Draw population curve
 lines(x, y_pop, lwd = 3, col = "black")
 
-# Add cutoff line
+# cutoff
 abline(v = 6.5, lwd = 2)
 
-# Add labels
 text(6.5, max(y_pop), "cut off", pos = 4)
 text(mu_A, max(res_A$y_top), "A", pos = 3)
 text(mu_B, max(res_B$y_top), "B", pos = 3)
 
-# Legend
 legend("topleft",
        legend = c("Population distribution",
                   "Individual distribution",

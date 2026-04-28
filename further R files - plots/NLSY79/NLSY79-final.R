@@ -2,6 +2,8 @@
 setwd("/Users/mia8425/Documents/Studium/6. Semester SS 2026/SE Seminar/further R files - plots/NLSY79")
 pdf("NLSY79-plot.pdf", width = 8, height = 5)
 
+# downloaded from https://www.nlsinfo.org/investigator/pages/search
+# .dat file is not accepted for submission
 new_data <- read.table('NLSY79-final.dat', sep=' ')
 names(new_data) <- c('C0000100',
   'C0000200',
