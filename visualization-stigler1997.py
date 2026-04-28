@@ -4,7 +4,8 @@
 
 # run this code and open up the index.html file that it creates
 
-# The interactive graphic is deployed at (url not anonymous)
+# The interactive graphic is deployed at 
+# https://threed-visualization-of-rtm.onrender.com
 # The code for this project (incl. requirements and deployment spec-
 # ific files (render)) can also be found on github (not anonymous)
 ####################################################################
