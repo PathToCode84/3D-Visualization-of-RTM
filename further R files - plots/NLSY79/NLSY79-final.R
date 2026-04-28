@@ -1,5 +1,6 @@
 # Set working directory
 setwd("/Users/mia8425/Documents/Studium/6. Semester SS 2026/SE Seminar/further R files - plots/NLSY79")
+pdf("NLSY79-plot.pdf", width = 8, height = 5)
 
 new_data <- read.table('NLSY79-final.dat', sep=' ')
 names(new_data) <- c('C0000100',
@@ -241,6 +242,8 @@ pairs %>%
   ) %>%
   arrange(wave_start, wave_end)
 
+## conclusion:
+# I will leave it at pairs
 
 ############################ Compute BMI z-scores and classify weight categories
 # using cdc.ref from childsds package
@@ -375,7 +378,7 @@ overweight_plot <- ggplot(
     x = NULL,
     y = "Mean BMI z-score",
     fill = NULL,
-    title = "BMI z-scores at start and follow-up among overweight children"
+    title = "BMI z-scores at start and follow-up of 2 year observation period among overweight children"
     #caption = "Overweight is based on the first measurement (BMI z-score >= 85th percentile).\n4th and 5th grade are approximated from baseline age."
   ) +
   theme_minimal() +
@@ -383,3 +386,5 @@ overweight_plot <- ggplot(
   
 
 overweight_plot
+
+dev.off()

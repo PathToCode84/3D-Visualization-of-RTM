@@ -1,0 +1,329 @@
+Rank,Group,Name ,Country,Jump_1_Prelim,Jump_2_Prelim,Jump_3_Prelim,Jump_1_Final,Jump_2_Final,Jump_3_Final,Jump_4_Final,Jump_5_Final,Jump_6_Final,Year,Gender
+1,A,Tara Davis-Woodhall,United States,6.64,6.9,,6.93,7.05,6.95,7.1,6.61,6.68,2024,Women
+2,B,Larissa Iapichino,Italy,6.6,6.87,,6.78,6.87,x,6.83,6.78,6.85,2024,Women
+3,B,Malaika Mihambo,Germany,x,x,6.86,6.77,6.81,6.95,x,6.98,x,2024,Women
+4,A,Ese Brume,Nigeria,6.44,6.4,6.76,x,6.59,6.63,6.7,6.51,6.7,2024,Women
+5,A,Ruth Usoro,Nigeria,x,6.68,6.65,6.58,x,5.8,,,,2024,Women
+6,A,Jasmine Moore,United States,6.35,6.66,x,6.96,6.92,6.62,6.75,6.88,6.88,2024,Women
+7,B,Prestina Ochonogor,Nigeria,6.27,6.65,6.29,6.07,6.24,6.24,,,,2024,Women
+8,B,Monae' Nichols,United States,6.43,6.52,6.64,6.64,x,6.36,6.63,6.67,6.66,2024,Women
+9,A,Alina Rotaru-Kottmann,Romania,6.45,6.46,6.63,6.46,6.46,6.65,6.55,6.67,6.5,2024,Women
+10,B,Ackelia Smith,Jamaica,6.51,6.59,6.58,6.66,6.52,x,5.86,6.4,6.42,2024,Women
+11,B,Marthe Koala,Burkina Faso,6.36,6.59,6.57,6.61,6.51,6.46,,,,2024,Women
+12,B,Hilary Kpatcha,France,6.18,6.2,6.59,6.56,5.54,5.78,,,,2024,Women
+13,A,Xiong Shiqi,China,6.58,6.56,6.52,,,,,,,2024,Women
+14,A,Pauline Hondema,Netherlands,4.72,6.21,6.55,,,,,,,2024,Women
+15,B,F†tima Diame,Spain,6.37,6.52,x,,,,,,,2024,Women
+16,B,Ivana ?panovi?,Serbia,x,6.51,6.31,,,,,,,2024,Women
+17,A,Chanice Porter,Jamaica,6.48,6.21,x,,,,,,,2024,Women
+18,A,Milica Garda?evi?,Serbia,6.48,x,x,,,,,,,2024,Women
+19,B,Plamena Mitkova,Bulgaria,6.45,6.42,6.33,,,,,,,2024,Women
+20,A,Laura Raquel MÅller,Germany,6.4,6.13,6.38,,,,,,,2024,Women
+21,B,Petra Farkas,Hungary,6.4,6.33,6.22,,,,,,,2024,Women
+22,A,Natalia Linares,Colombia,x,6.4,6.04,,,,,,,2024,Women
+23,A,Eliane Martins,Brazil,6.36,x,x,,,,,,,2024,Women
+24,A,Agate de Sousa,Portugal,x,6.34,6.27,,,,,,,2024,Women
+25,B,Brooke Buschkuehl,Australia,6.29,6.1,6.31,,,,,,,2024,Women
+26,B,Sumire Hata,Japan,6.21,x,6.31,,,,,,,2024,Women
+27,A,Nikola Horowska,Poland,x,6.31,x,,,,,,,2024,Women
+28,B,Mikaelle Assani,Germany,5.64,6.13,6.24,,,,,,,2024,Women
+29,A,Esraa Owis,Egypt,5.93,6.11,6.2,,,,,,,2024,Women
+30,A,Tessy Ebosele,Spain,6.02,x,6.09,,,,,,,2024,Women
+31,B,Lissandra Campos,Brazil,5.9,6.02,x,,,,,,,2024,Women
+1,A,Miltiadis Tentoglou,Greece,8.32,,,,8.48,8.24,,8.31,x,2024,Men
+2,B,Radek Ju?ka,Czech Republic,7.85,8.15,,,7.69,7.83,,,,2024,Men
+3,B,Wang Jianan,China,8.12,,,,x,7.92,,-,8.03,2024,Men
+4,B,Simon Ehammer,Switzerland,7.69,8.09,6.62,,8.2,8.11,,x,x,2024,Men
+5,B,Filip Pravdica,Croatia,7.68,8.04,7.59,,7.9,7.87,,,,2024,Men
+6,A,Mattia Furlani,Italy,8.01,7.95,x,,8.25,x,,8.34,8.27,2024,Men
+7,B,Wayne Pinnock,Jamaica,7.96,7.72,7.68,,8.36,7.99,,8.24,8.12,2024,Men
+8,A,Jacob Fincham-Dukes,Great Britain,x,7.38,7.96,,8.14,x,,x,7.64,2024,Men
+9,B,Zhang Mingkun,China,7.91,7.88,7.92,,x,8.07,,7.93,x,2024,Men
+10,B,Arnovis Dalmero,Colombia,7.92,7.83,7.78,,7.83,7.74,,,,2024,Men
+11,A,Carey McLeod,Jamaica,7.77,7.9,x,,7.16,7.82,,,,2024,Men
+12,A,Simon Batz,Germany,x,7.9,7.6,,8.07,7.79,,7.95,7.94,2024,Men
+13,A,Emiliano Lasa,Uruguay,7.87,7.58,7.7,,,,,,,2024,Men
+14,A,Bozhidar SarÉboyukov,Bulgaria,x,x,7.87,,,,,,,2024,Men
+15,A,Jeremiah Davis,United States,7.83,7.78,7.78,,,,,,,2024,Men
+16,B,Thobias Montler,Sweden,x,x,7.82,,,,,,,2024,Men
+17,A,Yuki Hashioka,Japan,x,7.72,7.81,,,,,,,2024,Men
+18,B,Chris Mitrevski,Australia,7.66,7.79,6.47,,,,,,,2024,Men
+19,B,Tajay Gayle,Jamaica,7.78,7.68,7.63,,,,,,,2024,Men
+20,A,Anvar Anvarov,Uzbekistan,7.57,7.77,7.77,,,,,,,2024,Men
+21,B,Malcolm Clemons,United States,7.72,7.46,7.72,,,,,,,2024,Men
+22,B,Lin Yu-Tang,Chinese Taipei,7.7,x,7.66,,,,,,,2024,Men
+23,A,Jovan van Vuuren,South Africa,7.7,x,7.41,,,,,,,2024,Men
+24,A,Shi Yuhao,China,7.68,7.3,7.68,,,,,,,2024,Men
+25,A,Alejandro Parada,Cuba,7.62,7.02,x,,,,,,,2024,Men
+26,B,Jeswin Aldrin,India,x,x,7.61,,,,,,,2024,Men
+27,A,Liam Adcock,Australia,7.41,7.56,7.29,,,,,,,2024,Men
+28,B,Tom Campagne,France,7.5,x,7.51,,,,,,,2024,Men
+29,A,Mohammad Amin Alsalami,Refugee Olympic Team,7.03,7.24,7.24,,,,,,,2024,Men
+30,A,Petr Meindlschmid,Czech Republic,6.97,x,x,,,,,,,2024,Men
+31,B,Cheswill Johnson,South Africa,x,4.49,x,,,,,,,2024,Men
+,,A,Lucas Marcelino,Brazil,x,x,,NM,,,,,2024,Men
+,,B,Jarrion Lawson,United States,x,x,,NM,,,,,2024,Men
+1,B,Ivana ?panovi?,Serbia,X,7,,6.71,6.91,6.84,X,6.63,6.72,2020,Women
+2,B,Malaika Mihambo,Germany,6.64,6.56,6.98,6.83,6.95,6.78,X,X,7,2020,Women
+3,A,Brittney Reese,United States,6.52,6.86,,6.6,6.81,6.97,6.87,6.95,6.84,2020,Women
+4,A,Tara Davis,United States,6.85,,,6.62,6.67,6.81,6.84,6.83,6.71,2020,Women
+5,B,Chantel Malone,British Virgin Islands,X,6.44,6.82,6.5,4.73,6.48,,,,2020,Women
+6,B,Ese Brume,Nigeria,6.68,6.55,6.76,6.97,6.67,X,6.88,X,6.9,2020,Women
+7,A,Khaddi Sagnia,Sweden,6.76,,,6.58,6.67,6.58,,,,2020,Women
+8,A,Abigail Irozuru,Great Britain,6.39,6.65,6.75,X,6.51,6.27,,,,2020,Women
+9,A,Tyra Gittens,Trinidad and Tobago,6.12,6.72,6.34,6.3,6.6,6.53,,,,2020,Women
+10,A,Maryna Bekh-Romanchuk,Ukraine,6.71,X,X,X,X,6.88,X,X,X,2020,Women
+11,A,Jazmin Sawyers,Great Britain,6.55,X,6.62,X,6.8,6.53,6.74,X,X,2020,Women
+12,A,Brooke Stratton,Australia,6.6,6.44,6.32,X,6.52,6.83,6.24,6.62,X,2020,Women
+13,B,Quanesha Burks,United States,6.04,6.56,6.18,,,,,,,2020,Women
+14,B,Nastassia Mironchyk-Ivanova,Belarus,6.21,6.39,6.55,,,,,,,2020,Women
+15,A,Maryse Luzolo,Germany,6.54,X,6.38,,,,,,,2020,Women
+16,B,Anaszt†zia Nguyen,Hungary,X,6.52,X,,,,,,,2020,Women
+17,A,Alina Rotaru,Romania,6.46,6.47,6.51,,,,,,,2020,Women
+18,B,Eliane Martins,Brazil,X,6.43,6.38,,,,,,,2020,Women
+19,A,Rellie Kaputin,Papua New Guinea,X,6.3,6.4,,,,,,,2020,Women
+20,B,Florentina Iusco,Romania,6.19,X,6.36,,,,,,,2020,Women
+21,B,F†tima Diame,Spain,X,6.27,6.32,,,,,,,2020,Women
+22,A,Christabel Nettey,Canada,6.18,6.23,6.29,,,,,,,2020,Women
+23,B,Yanis David,France,6.27,6.1,6.26,,,,,,,2020,Women
+24,A,Chanice Porter,Jamaica,X,6.13,6.22,,,,,,,2020,Women
+25,B,Tissanna Hickling,Jamaica,6.17,X,6.19,,,,,,,2020,Women
+26,B,Darya Reznichenko,Uzbekistan,5.92,5.94,6.19,,,,,,,2020,Women
+27,A,Nathalee Aranda,Panama,5.98,6.12,X,,,,,,,2020,Women
+28,B,Lorraine Ugen,Great Britain,6.05,X,X,,,,,,,2020,Women
+?,B,Ksenija Balta,Estonia,X,?,?,,,,,,,2020,Women
+,A,Darya Klishina,ROC,X,X,X,NM,,,,,,2020,Women
+1,B,Juan Miguel Echevarr°a,Cuba,8.5,,,8.09,x,8.41,6.71,?,x,2020,Men
+2,B,Miltiadis Tentoglou,Greece,8.22,,,8.11,x,x,8.1,8.15,8.41,2020,Men
+3,A,Yuki Hashioka,Japan,8.17,,,x,7.95,7.97,x,7.94,8.1,2020,Men
+4,B,Tajay Gayle,Jamaica,x,6.72,8.14,x,x,7.69,,,,2020,Men
+5,A,JuVaughn Harrison,United States,8.13,8.02,?,7.57,7.7,7.96,7.87,8.15,7.49,2020,Men
+6,A,Filippo Randazzo,Italy,8.1,x,?,x,7.99,x,x,7.88,x,2020,Men
+7,A,Maykel Mass¢,Cuba,8.07,8,7.92,8.21,8.05,?,?,?,?,2020,Men
+8,B,Thobias Montler,Sweden,7.82,x,8.01,8.08,7.93,x,8.05,x,x,2020,Men
+9,B,Eusebio C†ceres,Spain,7.98,7.75,?,7.96,8.09,x,x,8.12,8.18,2020,Men
+10,B,Huang Changzhou,China,7.75,7.59,7.96,x,7.5,7.72,,,,2020,Men
+10,B,Fabian Heinle,Germany,7.8,7.96,7.84,5.18,7.57,7.62,,,,2020,Men
+10,B,Kristian Pulli,Finland,7.71,7.96,x,7.85,7.92,7.88,,,,2020,Men
+13,A,Emiliano Lasa,Uruguay,7.85,7.95,7.78,,,,,,,2020,Men
+14,A,Henry Frayne,Australia,7.82,7.82,7.93,,,,,,,2020,Men
+15,A,Steffin McCarter,United States,7.69,7.81,7.92,,,,,,,2020,Men
+16,A,Samory Fraga,Brazil,7.88,x,x,,,,,,,2020,Men
+17,B,Gao Xinglong,China,x,7.86,7.86,,,,,,,2020,Men
+17,A,Izmir Smajlaj,Albania,7.81,7.86,x,,,,,,,2020,Men
+19,B,Marquis Dendy,United States,x,7.78,7.85,,,,,,,2020,Men
+20,A,Wang Jianan,China,7.59,7.81,7.64,,,,,,,2020,Men
+21,A,Carey McLeod,Jamaica,x,7.75,7.36,,,,,,,2020,Men
+22,B,Ruswahl Samaai,South Africa,7.7,7.74,x,,,,,,,2020,Men
+23,A,Shoutarou Shiroyama,Japan,6.24,7.7,x,,,,,,,2020,Men
+24,B,Murali Sreeshankar,India,7.69,7.51,7.43,,,,,,,2020,Men
+24,B,Lester Lescay,Cuba,7.69,x,7.63,,,,,,,2020,Men
+26,B,Hibiki Tsuha,Japan,7.52,7.61,7.55,,,,,,,2020,Men
+27,A,Vladyslav Mazur,Ukraine,7.6,7.54,7.58,,,,,,,2020,Men
+28,A,Bachana Khorava,Georgia,7.41,7.35,7.17,,,,,,,2020,Men
+29,B,Alexsandro Melo,Brazil,x,x,6.95,,,,,,,2020,Men
+?,A,Augustin Bey,France,x,x,,,,,,,,2020,Men
+,A,Cheswill Johnson,South Africa,x,x,x,,,,,,,2020,Men
+?,B,Andwuelle Wright,Trinidad and Tobago,,,,,,,,,,2020,Men
+1,A,Ivana ?panovi?,Serbia,6.87,,,6.95,x,x,6.91,7.08,7.05,2016,Women
+2,A,Malaika Mihambo,Germany,6.63,6.82,,6.83,x,x,6.58,6.95,6.79,2016,Women
+3,B,Brittney Reese,United States,6.78,,,x,6.79,x,x,7.09,7.15,2016,Women
+4,B,Ksenija Balta,Estonia,6.13,6.71,?,6.71,x,6.79,6.71,x,6.62,2016,Women
+5,A,Tianna Bartoletta,United States,6.44,6.7,6.61,x,6.94,6.95,6.74,7.17,7.13,2016,Women
+6,B,Ese Brume,Nigeria,6.32,6.67,6.49,6.73,6.34,6.71,5.96,6.81,x,2016,Women
+7,A,Lorraine Ugen,Great Britain,6.44,6.58,6.65,6.56,x,6.58,,,,2016,Women
+8,A,Darya Klishina,Russia,6.64,x,x,6.63,6.6,6.53,,,,2016,Women
+9,B,Brooke Stratton,Australia,6.4,6.46,6.56,x,6.69,6.64,6.74,6.64,6.53,2016,Women
+10,A,Maryna Bekh,Ukraine,6.49,6.47,6.55,x,x,x,,,,2016,Women
+11,A,Sosthene Moguenara,Germany,6.46,x,6.55,6.61,x,6.46,,,,2016,Women
+12,B,Jazmin Sawyers,Great Britain,6.49,6.36,6.53,6.55,6.69,6.57,6.53,x,x,2016,Women
+13,B,Janay Deloach,United States,6.45,6.5,6.46,,,,,,,2016,Women
+14,A,Karin Mey Melis,Turkey,6.49,6.43,6.4,,,,,,,2016,Women
+15,B,Jana Veldakova,Slovakia,6.45,6.48,6.29,,,,,,,2016,Women
+16,A,Bianca Stuart,Bahamas,6.45,5.4,6.39,,,,,,,2016,Women
+17,A,Chelsea Jaensch,Australia,6.2,6.35,6.41,,,,,,,2016,Women
+18,A,Alina Rotaru,Romania,6.4,x,6.38,,,,,,,2016,Women
+19,B,Anna Kornuta,Ukraine,x,6.34,6.37,,,,,,,2016,Women
+20,A,Christabel Nettey,Canada,6.05,6.32,6.37,,,,,,,2016,Women
+21,B,Shara Proctor,Great Britain,6.36,6.34,6.3,,,,,,,2016,Women
+22,B,Juliet Itoya,Spain,6.35,x,5.69,,,,,,,2016,Women
+23,B,Eliane Martins,Brazil,6.33,6.24,6.3,,,,,,,2016,Women
+24,A,Concepci¢n Montaner,Spain,6.23,6.23,6.32,,,,,,,2016,Women
+25,A,Volha Sudarava,Belarus,6.29,x,x,,,,,,,2016,Women
+26,B,Maria Natalia Londa,Indonesia,6.21,6.29,6.29,,,,,,,2016,Women
+27,B,Khaddi Sagnia,Sweden,6.04,6.25,x,,,,,,,2016,Women
+28,B,Marestella Sunang,Philippines,6.22,6.1,6.15,,,,,,,2016,Women
+29,A,Yuliya Tarasova,Uzbekistan,x,6.1,6.16,,,,,,,2016,Women
+30,B,Yvonne Trevi§o,Mexico,x,6.16,x,,,,,,,2016,Women
+31,A,Anna Lunyova,Ukraine,6.12,6.15,6.14,,,,,,,2016,Women
+32,A,Haido Alexouli,Greece,6.07,x,6.13,,,,,,,2016,Women
+33,B,Lynique Prinsloo,South Africa,5.96,x,6.1,,,,,,,2016,Women
+34,B,Alexandra Wester,Germany,5.98,x,x,,,,,,,2016,Women
+35,A,Amaliya Sharoyan,Armenia,5.58,x,5.95,,,,,,,2016,Women
+36,B,Mar°a del Mar Jover,Spain,x,5.82,5.9,,,,,,,2016,Women
+37,B,Konomi Kai,Japan,x,x,5.87,,,,,,,2016,Women
+38,A,Keila Costa,Brazil,5.86,5.73,5.79,,,,,,,2016,Women
+1,B,Wang Jianan,China,8.24,?,?,7.76,8.17,7.89,8.05,8.13,7.88,2016,Men
+2,A,Jeff Henderson,United States,8.2,?,?,8.2,7.94,8.1,7.96,8.22,8.38,2016,Men
+3,A,Emiliano Lasa,Uruguay,8.14,8.02,?,7.93,7.84,8.04,8.1,7.92,7.95,2016,Men
+4,A,Luvo Manyonga,South Africa,X,8.12,8.1,8.16,X,X,8.28,8.37,X,2016,Men
+5,A,Rushwal Samaai,South Africa,8.03,7.96,7.82,7.97,7.94,X,,,,2016,Men
+6,A,Henry Frayne,Australia,7.96,7.97,8.01,7.83,8.06,X,8.03,7.83,7.83,2016,Men
+7,B,Jarrion Lawson,United States,7.99,7.62,7.96,8.19,8.15,8.25,X,X,7.78,2016,Men
+8,B,Fabrice Lapierre,Australia,X,7.96,7.73,X,7.87,X,,,,2016,Men
+9,A,Huang Changzhou,China,7.59,7.57,7.95,7.78,X,7.86,,,,2016,Men
+10,A,Greg Rutherford,Great Britain,X,X,7.9,8.18,8.11,8.22,8.26,8.09,8.29,2016,Men
+11,A,KafÇtien Gomis,France,7.81,7.67,7.89,7.54,7.57,8.05,X,7.55,7.83,2016,Men
+12,B,Damar Forbes,Jamaica,7.85,7.68,7.62,7.63,7.74,7.82,,,,2016,Men
+13,B,Radek Ju?ka,Czech Republic,7.64,7.84,7.83,,,,,,,2016,Men
+14,A,Kim Deok-hyeon,South Korea,7.42,7.76,7.82,,,,,,,2016,Men
+15,B,Maykel Mass¢,Cuba,7.79,7.73,7.81,,,,,,,2016,Men
+16,A,Tyrone Smith,Bermuda,7.78,7.81,7.67,,,,,,,2016,Men
+17,B,Chan Ming Tai,Hong Kong,7.79,7.76,7.42,,,,,,,2016,Men
+18,A,Fabian Heinle,Germany,7.64,X,7.79,,,,,,,2016,Men
+19,B,Bachana Khorava,Georgia,7.72,7.77,X,,,,,,,2016,Men
+20,B,Jean Marie Okutu,Spain,7.75,7.72,7.53,,,,,,,2016,Men
+21,A,Izmir Smajlaj,Albania,7.72,7.61,X,,,,,,,2016,Men
+22,B,Stefan Brits,South Africa,7.46,7.71,X,,,,,,,2016,Men
+23,B,Kanstantsin Barycheuski,Belarus,7.39,X,7.67,,,,,,,2016,Men
+24,B,Ankit Sharma,India,X,X,7.67,,,,,,,2016,Men
+25,B,Mike Hartfield,United States,7.66,X,7.66,,,,,,,2016,Men
+26,A,Michel TornÇus,Sweden,X,7.65,7.63,,,,,,,2016,Men
+27,A,Miltiadis Tentoglou,Greece,X,7.64,7.57,,,,,,,2016,Men
+28,B,Higor Alves,Brazil,7.59,X,X,,,,,,,2016,Men
+29,B,Mohammad Arzandeh,Iran,7.29,7.23,7.31,,,,,,,2016,Men
+30,B,Alyn Camara,Germany,5.16,X,X,,,,,,,2016,Men
+,?,A,Gao Xinglong,China,X,X,X,,,,,,2016,Men
+,A,Aubrey Smith,Jamaica,X,X,X,No mark,,,,,,2016,Men
+1,A,Shara Proctor,Great Britain,6.83,-,-,6.55,x,6.37,,,,2012,Women
+2,B,Janay DeLoach,United States,6.81,-,-,6.77,x,6.71,6.74,6.89,x,2012,Women
+3,A,Karin Mey Melis,Turkey,6.8,-,-,,,,,,,2012,Women
+4,A,Yelena Sokolova,Russia,6.63,6.71,-,6.8,7.07,6.84,6.93,6.78,6.79,2012,Women
+5,B,Ineta Rad?vi?a,Latvia,6.58,6.59,6.68,6.88,6.77,6.74,x,x,6.79,2012,Women
+6,A,Nastassia Mironchyk-Ivanova,Belarus,6.55,6.62,6.66,6.61,6.62,6.54,6.72,x,4.55,2012,Women
+7,B,Anna Nazarova,Russia,x,6.62,x,,,,,,,2012,Women
+8,A,Lyudmila Kolchanova,Russia,6.57,x,6.54,x,x,6.76,6.44,x,5.97,2012,Women
+9,A,Brittney Reese,United States,x,x,6.57,x,7.12,x,x,6.69,x,2012,Women
+10,B,êloyse Lesueur,France,6.48,x,6.38,6.57,x,x,x,6.67,x,2012,Women
+11,A,Ivana ?panovi?,Serbia,x,6.21,6.41,4.29,6.33,6.35,,,,2012,Women
+12,B,Veronika Shutkova,Belarus,6.01,6.21,6.4,6.37,6.54,6.53,,,,2012,Women
+13,B,Arantxa King,Bermuda,6.4,x,6.2,,,,,,,2012,Women
+14,A,Volha Sudarava,Belarus,6.38,6.35,6.13,,,,,,,2012,Women
+15,B,Maurren Higa Maggi,Brazil,6.37,x,6.27,,,,,,,2012,Women
+16,B,Chelsea Hayes,United States,6.11,6.37,6.05,,,,,,,2012,Women
+17,A,Blessing Okagbare,Nigeria,6.32,6.2,6.34,,,,,,,2012,Women
+18,A,Bianca Stuart,Bahamas,5.3,6.31,6.32,,,,,,,2012,Women
+19,B,Concepci¢n Montaner,Spain,6.3,6.13,x,,,,,,,2012,Women
+20,B,Viktoriya Rybalko,Ukraine,x,6.21,6.29,,,,,,,2012,Women
+21,B,Sostene Moguenara,Germany,6.23,x,x,,,,,,,2012,Women
+22,A,Marestella Torres,Philippines,5.98,6.21,6.22,,,,,,,2012,Women
+23,A,Ola Sesay,Sierra Leone,6.22,5.77,5.91,,,,,,,2012,Women
+24,B,Viorica ?ig?u,Romania,6.21,x,x,,,,,,,2012,Women
+25,B,Irene Pusterla,Switzerland,6.2,6.14,4.88,,,,,,,2012,Women
+26,A,Marharyta Tverdohlib,Ukraine,x,6.19,6.19,,,,,,,2012,Women
+27,B,Jana Vel?†kov†,Slovakia,6.02,6.18,x,,,,,,,2012,Women
+28,A,Lauma Gr?va,Latvia,6.1,5.96,6.08,,,,,,,2012,Women
+?,A,Maiko Gogoladze,Georgia,x,x,x,,,,,,,2012,Women
+?,A,Yuliya Tarasova,Uzbekistan,x,x,x,,,,,,,2012,Women
+?,B,Caterine IbargÅen,Colombia,?,?,?,,,,,,,2012,Women
+?,B,Margrethe Renstr?m,Norway,?,?,?,,,,,,,2012,Women
+1,B,Mauro Vinicius da Silva,Brazil,8.07,8.11,?,X,x,7.96,8.01,X,X,2012,Men
+2,A,Marquise Goodwin,United States,8.11,?,?,X,7.8,7.76,,,,2012,Men
+3,A,Aleksandr Menkov,Russia,7.87,X,8.09,X,X,7.78,,,,2012,Men
+4,A,Greg Rutherford,Great Britain,8.08,8.06,?,6.28,8.21,8.14,8.31,X,6.33,2012,Men
+5,B,Christopher Tomlinson,Great Britain,7.62,8.06,?,8.06,7.87,7.83,8.07,7.74,7.76,2012,Men
+6,A,Michel TornÇus,Sweden,8.03,7.49,?,7.63,7.8,8.07,8.11,8.07,7.98,2012,Men
+7,A,Godfrey Khotso Mokoena,South Africa,X,7.81,8.02,7.93,X,7.62,X,X,X,2012,Men
+8,A,Will Claye,United States,7.99,X,7.86,7.98,8.07,7.93,8.12,7.96,X,2012,Men
+9,B,Mitchell Watt,Australia,X,7.99,?,X,7.97,X,x,8.13,,2012,Men
+10,A,Tyrone Smith,Bermuda,7.73,7.75,7.97,7.7,X,X,,,,2012,Men
+11,A,Henry Frayne,Australia,7.82,X,7.95,7.85,X,7.63,,,,2012,Men
+12,B,Sebastian Bayer,Germany,7.92,7.88,3.96,7.87,X,7.96,8.1,7.96,7.98,2012,Men
+13,A,Christian Reif,Germany,7.81,X,7.92,,,,,,,2012,Men
+14,A,Eusebio C†ceres,Spain,7.25,7.92,6.95,,,,,,,2012,Men
+15,B,Aleksandr Petrov,Russia,7.67,7.57,7.89,,,,,,,2012,Men
+16,B,Sergey Morgunov,Russia,X,7.87,x,,,,,,,2012,Men
+17,A,Mohammad Arzandeh,Iran,7.77,7.75,7.84,,,,,,,2012,Men
+18,B,Ignisious Gaisah,Ghana,7.72,7.79,7.5,,,,,,,2012,Men
+19,A,Damar Forbes,Jamaica,7.79,X,7.48,,,,,,,2012,Men
+20,B,Li Jinzhe,China,7.59,7.67,7.77,,,,,,,2012,Men
+21,B,Raymond Higgs,Bahamas,X,7.76,X,,,,,,,2012,Men
+22,A,Alyn Camara,Germany,7.72,X,7.69,,,,,,,2012,Men
+23,A,Salim Sdiri,France,7.71,7.58,5.75,,,,,,,2012,Men
+24,B,Ndiss Kaba Badji,Senegal,7.66,X,7.64,,,,,,,2012,Men
+25,B,Arsen Sargsyan,Armenia,7.38,7.62,7.6,,,,,,,2012,Men
+26,B,Povilas Mykolaitis,Lithuania,X,X,7.61,,,,,,,2012,Men
+27,B,Stanley Gbagbeke,Nigeria,X,5.71,7.59,,,,,,,2012,Men
+28,B,Marcos Chuva,Portugal,X,7.55,7.06,,,,,,,2012,Men
+29,A,Lo£is Ts†toumas,Greece,7.53,7.48,X,,,,,,,2012,Men
+30,A,?tep†n Wagner,Czech Republic,7.39,7.5,7.47,,,,,,,2012,Men
+31,B,Viktor Kuznyetsov,Ukraine,7.43,X,7.5,,,,,,,2012,Men
+32,B,Luis Rivera,Mexico,7.42,X,7.29,,,,,,,2012,Men
+33,A,Lin Ching-hsuan,Chinese Taipei,7.38,7.35,X,,,,,,,2012,Men
+,A,Supanara Sukhasvasti,Thailand,7.38,X,7.35,,,,,,,2012,Men
+35,A,Boleslav Skhirtladze,Georgia,7.26,6.95,6.9,,,,,,,2012,Men
+36,A,Zhang Xiaoyi,China,7.25,X,X,,,,,,,2012,Men
+37,B,Mohamed Fathalla Difallah,Egypt,X,7.08,X,,,,,,,2012,Men
+38,B,Roman Novotn?,Czech Republic,X,6.96,X,,,,,,,2012,Men
+39,B,George Kitchens,United States,X,X,6.84,,,,,,,2012,Men
+40,A,Vardan Pahlevanyan,Armenia,X,6.55,X,,,,,,,2012,Men
+?,B,Luis Felipe MÇliz,Spain,X,?,?,,,,,,,2012,Men
+,B,Irving Saladino,Panama,X,X,X,No mark,,,,,,2012,Men
+1,B,Brittney Reese,United States,x,6.87,,6.65,6.76,4.23,x,6.46,6.67,2008,Women
+2,A,Maurren Higa Maggi,Brazil,6.68,6.79,,7.04,x,x,x,6.73,x,2008,Women
+3,B,Tatyana Lebedeva,Russia,6.65,6.7,,6.97,x,x,x,x,7.03,2008,Women
+4,A,Carolina KlÅft,Sweden,6.7,x,,x,6.49,6.42,,,,2008,Women
+5,A,Grace Upshaw,United States,6.47,6.68,x,6.58,x,6.52,x,x,x,2008,Women
+6,A,Oksana Udmurtova,Russia,6.48,x,6.63,6.69,6.7,6.67,6.61,6.65,6.49,2008,Women
+7,B,Keila Costa,Brazil,x,6.44,6.62,x,x,6.43,,,,2008,Women
+8,A,Tabia Charles,Canada,6.33,6.61,6.49,6.16,6.38,6.47,,,,2008,Women
+9,A,Funmi Jimoh,United States,6.42,6.28,6.61,6.24,x,6.29,,,,2008,Women
+10,B,Jade Johnson,Great Britain,6.33,6.15,6.61,6.51,6.64,6.4,6.59,6.43,x,2008,Women
+11,A,Chelsea Hammond,Jamaica,6.6,x,x,6.79,6.68,6.51,x,6.64,6.59,2008,Women
+12,B,Blessing Okagbare,Nigeria,6.37,6.49,6.59,6.91,6.62,6.79,6.7,6.83,x,2008,Women
+13,B,Tatyana Kotova,Russia,6.37,6.57,x,,,,,,,2008,Women
+14,A,Hrysopiy° Devetz°,Greece,x,6.57,x,,,,,,,2008,Women
+15,B,Concepci¢n Montaner,Spain,6.53,6.42,6.43,,,,,,,2008,Women
+16,B,Bronwyn Thompson,Australia,x,6.53,x,,,,,,,2008,Women
+17,A,Yargelis Savigne,Cuba,x,x,6.49,,,,,,,2008,Women
+18,B,Iryna Charnushenka-Stasiuk,Belarus,6.48,x,x,,,,,,,2008,Women
+19,B,Kumiko Ikeda,Japan,6.44,6.47,x,,,,,,,2008,Women
+20,A,Denisa ??erbov†,Czech Republic,6.4,6.46,5.17,,,,,,,2008,Women
+21,A,Patricia Sylvester,Grenada,6.44,6.42,6.38,,,,,,,2008,Women
+22,B,Viorica ?ig?u,Romania,x,6.38,6.44,,,,,,,2008,Women
+23,A,Viktoriya Rybalko,Ukraine,x,x,6.43,,,,,,,2008,Women
+24,A,Karin Melis Mey,Turkey,x,6.42,x,,,,,,,2008,Women
+25,B,Ruky Abdulai,Canada,x,6.41,6.25,,,,,,,2008,Women
+26,A,Nina Kolari?,Slovenia,4.92,6.19,6.4,,,,,,,2008,Women
+27,B,Ksenija Balta,Estonia,x,6.38,x,,,,,,,2008,Women
+28,B,Soon-ok Jung,South Korea,x,x,6.33,,,,,,,2008,Women
+29,B,Olga Rypakova,Kazakhstan,x,6.3,6.04,,,,,,,2008,Women
+30,B,Ivana ?panovi?,Serbia,x,x,6.3,,,,,,,2008,Women
+31,A,Naide Gomes,Portugal,x,x,6.29,,,,,,,2008,Women
+32,A,Volha Sergeenka,Belarus,6.25,6.02,6.09,,,,,,,2008,Women
+33,B,Oleksandra Stadnyuk,Ukraine,x,6.19,x,,,,,,,2008,Women
+34,B,Marestella Torres,Philippines,4.27,5.94,6.17,,,,,,,2008,Women
+35,A,Pamela Mouele-Mboussi,Republic of the Congo,x,5.94,6.06,,,,,,,2008,Women
+36,B,Arantxa King,Bermuda,6.01,x,x,,,,,,,2008,Women
+37,A,Rhonda Watkins,Trinidad and Tobago,x,5.88,x,,,,,,,2008,Women
+38,A,Tricia Flores,Belize,5.25,x,-,,,,,,,2008,Women
+?,B,Anju Bobby George,India,x,x,x,,,,,,,2008,Women
+?,B,Jackie Edwards,Bahamas,x,x,x,,,,,,,2008,Women
+?,A,Jana Vel?†kov†,Slovakia,x,x,x,,,,,,,2008,Women
+?,A,Lyudmyla Blonska,Ukraine,,,,,,,,,,2008,Women
+1,A,Louis Tsatoumas,Greece,8.27,?,?,X,X,X,,,,2008,Men
+2,A,Ibrahim Camejo,Cuba,8.23,?,?,7.94,8.09,8.08,7.88,7.93,8.2,2008,Men
+3,A,Greg Rutherford,Great Britain,8.16,?,?,X,5.2,7.84,,,,2008,Men
+4,A,Khotso Mokoena,South Africa,8.03,X,8.14,7.86,X,8.02,8.24,X,X,2008,Men
+5,B,Ngonidzashe Makusha,Zimbabwe,8.14,7.94,?,8.19,8.06,8.05,8.1,8.05,6.48,2008,Men
+6,B,Wilfredo Mart°nez,Cuba,7.92,7.8,8.07,,,,,,,2008,Men
+7,B,Ndiss Kaba Badji,Senegal,7.65,7.79,8.07,8.03,X,8.02,8.16 SB,8.03,7.92,2008,Men
+8,A,Hussein Taher Al-Sabee,Saudi Arabia,5.47,8.04,X,7.8,X,X,,,,2008,Men
+9,B,Irving Saladino,Panama,X,X,8.01,X,8.17,8.21,8.34,X,X,2008,Men
+10,A,Luis Felipe MÇliz,Spain,X,7.77,7.95,X,8.02,X,X,7.98,8.07,2008,Men
+11,A,Gable Garenamotse,Botswana,7.58,X,7.95,X,7.85,?,,,,2008,Men
+12,B,Roman Novotn?,Czech Republic,7.75,7.81,7.94,7.87,7.75,8,X,7.82,7.94,2008,Men
+ ,,,,,,,,,,,,,,
+ ,,,,,,,,,,,,,,
+ , ,,,,,,,,,,,,,
+ ,,,,,,,,,,,,,,

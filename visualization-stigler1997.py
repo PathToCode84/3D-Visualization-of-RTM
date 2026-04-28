@@ -1,39 +1,24 @@
 from pathlib import Path
+import json
+import math
 
 import numpy as np
 import plotly.graph_objects as go
 
 rho = 0.5
 x_plane = 1.5 # where does plane cut
-x_plane_values = np.concatenate((np.linspace(-3, -0.25, 12), np.linspace(0.25, 3, 12)))
+x_plane_values = np.linspace(0, 3, 25)
+rho_values = np.linspace(-0.9, 0.9, 19)
 # where 0.18377 is maximum
 
 # Grid
-resolution = 100
+resolution = 200
 x = np.linspace(-3, 3, resolution)
 y = np.linspace(-3, 3, resolution)
 X, Y = np.meshgrid(x, y)
 
-# normal density
-normalizing_constant = 1 / (2 * np.pi * np.sqrt(1 - rho**2))
-Z = normalizing_constant * np.exp(
-    -(X**2 - 2 * rho * X * Y + Y**2) / (2 * (1 - rho**2))
-)
-
-# Contour geometry for the correlated normal
-sigma = np.array([[1, rho], [rho, 1]])
-sigma_inv = np.linalg.inv(sigma)
-quadratic_form = (
-    sigma_inv[0, 0] * X**2
-    + 2 * sigma_inv[0, 1] * X * Y
-    + sigma_inv[1, 1] * Y**2
-)
-
 theta = np.linspace(0, 2 * np.pi, 240)
-eigenvalues, eigenvectors = np.linalg.eigh(sigma)
 x_line = np.linspace(-3, 3, 240)
-y_regression = rho * x_line
-y_identity = x_line
 
 # Vertical plane at x = x_plane
 y_plane = np.linspace(-3, 3, 60)
@@ -47,7 +32,52 @@ wall_color = "black"
 wall_width = 5
 
 
-def line_segment(direction, level, z_value):
+def density(rho_value, x_values, y_values):
+    normalizing_constant = 1 / (2 * np.pi * np.sqrt(1 - rho_value**2))
+    return normalizing_constant * np.exp(
+        -(x_values**2 - 2 * rho_value * x_values * y_values + y_values**2)
+        / (2 * (1 - rho_value**2))
+    )
+
+
+def normal_pdf(value):
+    return math.exp(-0.5 * value**2) / math.sqrt(2 * math.pi)
+
+
+def normal_cdf(value):
+    return 0.5 * (1 + math.erf(value / math.sqrt(2)))
+
+
+def rtm_effect(rho_value, x_plane_value):
+    a1 = x_plane_value
+    return (1 - rho_value) * (normal_pdf(a1) / (1 - normal_cdf(a1)))
+
+
+def rtm_label(rho_value, x_plane_value):
+    return f"RTM-effect = {rtm_effect(rho_value, x_plane_value):.3f}"
+
+
+def rho_geometry(rho_value):
+    sigma = np.array([[1, rho_value], [rho_value, 1]])
+    sigma_inv = np.linalg.inv(sigma)
+    quadratic_form = (
+        sigma_inv[0, 0] * X**2
+        + 2 * sigma_inv[0, 1] * X * Y
+        + sigma_inv[1, 1] * Y**2
+    )
+    eigenvalues, eigenvectors = np.linalg.eigh(sigma)
+    return {
+        "normalizing_constant": 1 / (2 * np.pi * np.sqrt(1 - rho_value**2)),
+        "sigma_inv": sigma_inv,
+        "quadratic_form": quadratic_form,
+        "eigenvalues": eigenvalues,
+        "eigenvectors": eigenvectors,
+        "z": density(rho_value, X, Y),
+        "y_regression": rho_value * x_line,
+    }
+
+
+def line_segment(direction, level, z_value, sigma_inv):
     direction = np.asarray(direction, dtype=float)
     quad_scalar = direction @ sigma_inv @ direction
     extent = np.sqrt(level / quad_scalar)
@@ -55,35 +85,39 @@ def line_segment(direction, level, z_value):
     return segment[0], segment[1], np.full(2, z_value)
 
 
-def slice_data(x_plane_value):
+def slice_data(rho_value, x_plane_value):
+    geometry = rho_geometry(rho_value)
+    normalizing_constant = geometry["normalizing_constant"]
     # The wall touches the highest density at y = rho * x_plane.
     z_touch = normalizing_constant * np.exp(-(x_plane_value**2) / 2)
     level = x_plane_value**2
     # Cap the surface at the slice height to avoid triangulation spikes.
-    z_cap = np.minimum(Z, z_touch)
+    z_cap = np.minimum(geometry["z"], z_touch)
 
     z_wall = z_touch * Z_plane_base
     x_wall = np.full_like(Y_plane, x_plane_value)
-    z_horizontal_ellipse = np.where(quadratic_form <= level, z_touch, np.nan)
+    x_wall_density = np.full_like(y_plane, x_plane_value)
+    z_wall_density = density(rho_value, x_plane_value, y_plane)
+    z_horizontal_ellipse = np.where(geometry["quadratic_form"] <= level, z_touch, np.nan)
 
-    ellipse_xy = eigenvectors @ np.diag(np.sqrt(level * eigenvalues)) @ np.vstack(
-        (np.cos(theta), np.sin(theta))
+    ellipse_xy = (
+        geometry["eigenvectors"]
+        @ np.diag(np.sqrt(level * geometry["eigenvalues"]))
+        @ np.vstack((np.cos(theta), np.sin(theta)))
     )
     ellipse_x = ellipse_xy[0]
     ellipse_y = ellipse_xy[1]
     ellipse_z = np.full_like(ellipse_x, z_touch)
 
-    z_regression = normalizing_constant * np.exp(
-        -(x_line**2 - 2 * rho * x_line * y_regression + y_regression**2)
-        / (2 * (1 - rho**2))
-    )
+    y_regression = geometry["y_regression"]
+    z_regression = density(rho_value, x_line, y_regression)
     z_regression_3d = np.minimum(z_regression, z_touch)
 
     regression_x_2d, regression_y_2d, z_regression_2d = line_segment(
-        [1, rho], level, z_touch
+        [1, rho_value], level, z_touch, geometry["sigma_inv"]
     )
     identity_x_2d, identity_y_2d, z_identity_2d = line_segment(
-        [1, 1], level, z_touch
+        [1, 1], level, z_touch, geometry["sigma_inv"]
     )
 
     return {
@@ -91,10 +125,13 @@ def slice_data(x_plane_value):
         "z_cap": z_cap,
         "x_wall": x_wall,
         "z_wall": z_wall,
+        "x_wall_density": x_wall_density,
+        "z_wall_density": z_wall_density,
         "z_horizontal_ellipse": z_horizontal_ellipse,
         "ellipse_x": ellipse_x,
         "ellipse_y": ellipse_y,
         "ellipse_z": ellipse_z,
+        "y_regression": y_regression,
         "z_regression_3d": z_regression_3d,
         "regression_x_2d": regression_x_2d,
         "regression_y_2d": regression_y_2d,
@@ -109,7 +146,7 @@ grid_step = 0.3
 grid_values = np.arange(-3, 3 + 1e-9, grid_step)
 
 
-def bell_grid_lines(z_touch):
+def bell_grid_lines(rho_value, z_touch):
     x_lines = []
     y_lines = []
     z_lines = []
@@ -117,10 +154,7 @@ def bell_grid_lines(z_touch):
     for x_value in grid_values:
         x_curve = np.full_like(y, x_value)
         y_curve = y
-        z_curve = normalizing_constant * np.exp(
-            -(x_value**2 - 2 * rho * x_value * y_curve + y_curve**2)
-            / (2 * (1 - rho**2))
-        )
+        z_curve = density(rho_value, x_value, y_curve)
         z_curve = np.where(z_curve < z_touch, z_curve, np.nan)
         x_lines.append(x_curve)
         y_lines.append(y_curve)
@@ -129,16 +163,27 @@ def bell_grid_lines(z_touch):
     for y_value in grid_values:
         x_curve = x
         y_curve = np.full_like(x, y_value)
-        z_curve = normalizing_constant * np.exp(
-            -(x_curve**2 - 2 * rho * x_curve * y_value + y_value**2)
-            / (2 * (1 - rho**2))
-        )
+        z_curve = density(rho_value, x_curve, y_value)
         z_curve = np.where(z_curve < z_touch, z_curve, np.nan)
         x_lines.append(x_curve)
         y_lines.append(y_curve)
         z_lines.append(z_curve)
 
     return x_lines, y_lines, z_lines
+
+
+def json_ready(value):
+    if isinstance(value, dict):
+        return {key: json_ready(item) for key, item in value.items()}
+    if isinstance(value, np.ndarray):
+        return json_ready(value.tolist())
+    if isinstance(value, list):
+        return [json_ready(item) for item in value]
+    if isinstance(value, np.generic):
+        return json_ready(value.item())
+    if isinstance(value, float) and np.isnan(value):
+        return None
+    return value
 
 
 def wall_traces(x_plane_value, z_touch, z_wall):
@@ -176,7 +221,7 @@ def wall_traces(x_plane_value, z_touch, z_wall):
         ),
     ]
 
-initial_slice = slice_data(x_plane)
+initial_slice = slice_data(rho, x_plane)
 
 # Surface
 fig.add_trace(
@@ -203,7 +248,17 @@ fig.add_trace(
 for trace in wall_traces(x_plane, initial_slice["z_touch"], initial_slice["z_wall"]):
     fig.add_trace(trace)
 
-initial_grid_x, initial_grid_y, initial_grid_z = bell_grid_lines(initial_slice["z_touch"])
+fig.add_trace(go.Scatter3d(
+    x=initial_slice["x_wall_density"],
+    y=y_plane,
+    z=initial_slice["z_wall_density"],
+    mode="lines",
+    line=dict(width=7, color="black"),
+    name="wall density outline",
+    showlegend=False
+))
+
+initial_grid_x, initial_grid_y, initial_grid_z = bell_grid_lines(rho, initial_slice["z_touch"])
 for x_curve, y_curve, z_curve in zip(initial_grid_x, initial_grid_y, initial_grid_z):
     fig.add_trace(go.Scatter3d(
         x=x_curve, y=y_curve, z=z_curve,
@@ -228,14 +283,16 @@ fig.add_trace(go.Scatter3d(
     x=initial_slice["ellipse_x"], y=initial_slice["ellipse_y"], z=initial_slice["ellipse_z"],
     mode="lines",
     line=dict(width=4, color="black"),
-    name="ellipse outline"
+    name="ellipse outline",
+    showlegend=False
 ))
 
 # 3D regression line on the density surface up to the cut height
 fig.add_trace(go.Scatter3d(
-    x=x_line, y=y_regression, z=initial_slice["z_regression_3d"],
+    x=x_line, y=initial_slice["y_regression"], z=initial_slice["z_regression_3d"],
     mode='lines', line=dict(width=6, color ="#111111"),
-    name="regression 3d"
+    name="regression 3d",
+    showlegend=False
 ))
 
 # 2D regression line inside the ellipse
@@ -244,7 +301,8 @@ fig.add_trace(go.Scatter3d(
     y=initial_slice["regression_y_2d"],
     z=initial_slice["z_regression_2d"],
     mode='lines', line=dict(width=6, color ="black"),
-    name="regression 2d"
+    name="regression 2d",
+    showlegend=False
 ))
 
 # indentity line inside the ellipse
@@ -253,81 +311,329 @@ fig.add_trace(go.Scatter3d(
     y=initial_slice["identity_y_2d"],
     z=initial_slice["z_identity_2d"],
     mode='lines', line=dict(width=6, color ="black"),
-    name="identity 2d"
+    name="identity 2d",
+    showlegend=False
 ))
 
-slider_steps = []
-for x_plane_value in x_plane_values:
-    current_slice = slice_data(x_plane_value)
-    current_grid_x, current_grid_y, current_grid_z = bell_grid_lines(current_slice["z_touch"])
-    slider_steps.append(
+trace_indices = list(range(0, 7 + len(initial_grid_x))) + [
+    7 + len(initial_grid_x),
+    8 + len(initial_grid_x),
+    9 + len(initial_grid_x),
+    10 + len(initial_grid_x),
+    11 + len(initial_grid_x),
+]
+
+x_plane_steps = []
+for x_plane_index, x_plane_value in enumerate(x_plane_values):
+    x_plane_steps.append(
         dict(
-            method="restyle",
-            args=[
-                {
-                    "x": [
-                        X,
-                        current_slice["x_wall"],
-                        [x_plane_value, x_plane_value],
-                        [x_plane_value, x_plane_value],
-                        [x_plane_value, x_plane_value],
-                        [x_plane_value, x_plane_value],
-                        *current_grid_x,
-                        X,
-                        current_slice["ellipse_x"],
-                        x_line,
-                        current_slice["regression_x_2d"],
-                        current_slice["identity_x_2d"],
-                    ],
-                    "y": [
-                        Y,
-                        Y_plane,
-                        [-3, 3],
-                        [-3, 3],
-                        [-3, -3],
-                        [3, 3],
-                        *current_grid_y,
-                        Y,
-                        current_slice["ellipse_y"],
-                        y_regression,
-                        current_slice["regression_y_2d"],
-                        current_slice["identity_y_2d"],
-                    ],
-                    "z": [
-                        current_slice["z_cap"],
-                        current_slice["z_wall"],
-                        [0, 0],
-                        [current_slice["z_touch"], current_slice["z_touch"]],
-                        [0, current_slice["z_touch"]],
-                        [0, current_slice["z_touch"]],
-                        *current_grid_z,
-                        current_slice["z_horizontal_ellipse"],
-                        current_slice["ellipse_z"],
-                        current_slice["z_regression_3d"],
-                        current_slice["z_regression_2d"],
-                        current_slice["z_identity_2d"],
-                    ]
-                },
-                list(range(0, 6 + len(current_grid_x))) + [6 + len(current_grid_x), 7 + len(current_grid_x), 8 + len(current_grid_x), 9 + len(current_grid_x), 10 + len(current_grid_x)],
-            ],
+            method="skip",
+            args=[x_plane_index],
             label=f"{x_plane_value:.2f}",
         )
     )
+
+rho_steps = []
+for rho_index, rho_value in enumerate(rho_values):
+    rho_steps.append(
+        dict(
+            method="skip",
+            args=[rho_index],
+            label=f"{rho_value:.1f}",
+        )
+    )
+
+slider_script = f"""
+const traceIndices = {json.dumps(trace_indices)};
+const xValues = {json.dumps(json_ready(x))};
+const yValues = {json.dumps(json_ready(y))};
+const yPlaneValues = {json.dumps(json_ready(y_plane))};
+const zPlaneBaseValues = {json.dumps(json_ready(z_plane_base))};
+const thetaValues = {json.dumps(json_ready(theta))};
+const xLineValues = {json.dumps(json_ready(x_line))};
+const gridValues = {json.dumps(json_ready(grid_values))};
+const rhoValues = {json.dumps(json_ready(rho_values))};
+const xPlaneValues = {json.dumps(json_ready(x_plane_values))};
+let rhoIndex = {int(np.argmin(np.abs(rho_values - rho)))};
+let xPlaneIndex = {int(np.argmin(np.abs(x_plane_values - x_plane)))};
+let showSlices = true;
+
+function density(rho, x, y) {{
+    const normalizingConstant = 1 / (2 * Math.PI * Math.sqrt(1 - rho * rho));
+    return normalizingConstant * Math.exp(
+        -(x * x - 2 * rho * x * y + y * y) / (2 * (1 - rho * rho))
+    );
+}}
+
+function normalPdf(value) {{
+    return Math.exp(-0.5 * value * value) / Math.sqrt(2 * Math.PI);
+}}
+
+function normalCdf(value) {{
+    const sign = value < 0 ? -1 : 1;
+    const x = Math.abs(value) / Math.sqrt(2);
+    const t = 1 / (1 + 0.3275911 * x);
+    const erfApprox = 1 - (((((1.061405429 * t - 1.453152027) * t + 1.421413741) *
+        t - 0.284496736) * t + 0.254829592) * t) * Math.exp(-x * x);
+    return 0.5 * (1 + sign * erfApprox);
+}}
+
+function rtmValue(rho, xPlane) {{
+    return (1 - rho) * normalPdf(xPlane) / (1 - normalCdf(xPlane));
+}}
+
+function rtmText() {{
+    if (!showSlices) {{
+        return 'RTM-effect = 0.000';
+    }}
+    return `RTM-effect = ${{rtmValue(rhoValues[rhoIndex], xPlaneValues[xPlaneIndex]).toFixed(3)}}`;
+}}
+
+function matrixFromAxes(xAxis, yAxis, fn) {{
+    return yAxis.map((y) => xAxis.map((x) => fn(x, y)));
+}}
+
+function lineSegment(rho, direction, level, zValue) {{
+    const dx = direction[0];
+    const dy = direction[1];
+    const quadScalar = (dx * dx - 2 * rho * dx * dy + dy * dy) / (1 - rho * rho);
+    const extent = Math.sqrt(level / quadScalar);
+    return [
+        [-extent * dx, extent * dx],
+        [-extent * dy, extent * dy],
+        [zValue, zValue],
+    ];
+}}
+
+function buildTraceUpdate(rho, xPlane) {{
+    const normalizingConstant = 1 / (2 * Math.PI * Math.sqrt(1 - rho * rho));
+    const zTouch = normalizingConstant * Math.exp(-(xPlane * xPlane) / 2);
+    const level = xPlane * xPlane;
+    const sqrtOneMinusRhoSquared = Math.sqrt(1 - rho * rho);
+
+    const xGrid = matrixFromAxes(xValues, yValues, (x) => x);
+    const yGrid = matrixFromAxes(xValues, yValues, (_, y) => y);
+    const zCap = matrixFromAxes(xValues, yValues, (x, y) => {{
+        const z = density(rho, x, y);
+        return showSlices ? Math.min(z, zTouch) : z;
+    }});
+
+    const xWall = zPlaneBaseValues.map(() => yPlaneValues.map(() => xPlane));
+    const yWall = zPlaneBaseValues.map(() => yPlaneValues.slice());
+    const zWall = zPlaneBaseValues.map((zBase) => yPlaneValues.map(() => zTouch * zBase));
+    const xWallDensity = yPlaneValues.map(() => xPlane);
+    const zWallDensity = yPlaneValues.map((y) => density(rho, xPlane, y));
+
+    const gridX = [];
+    const gridY = [];
+    const gridZ = [];
+    for (const xValue of gridValues) {{
+        const xCurve = yValues.map(() => xValue);
+        const yCurve = yValues.slice();
+        const zCurve = yValues.map((y) => {{
+            const z = density(rho, xValue, y);
+            return showSlices && z >= zTouch ? null : z;
+        }});
+        gridX.push(xCurve);
+        gridY.push(yCurve);
+        gridZ.push(zCurve);
+    }}
+    for (const yValue of gridValues) {{
+        const xCurve = xValues.slice();
+        const yCurve = xValues.map(() => yValue);
+        const zCurve = xValues.map((x) => {{
+            const z = density(rho, x, yValue);
+            return showSlices && z >= zTouch ? null : z;
+        }});
+        gridX.push(xCurve);
+        gridY.push(yCurve);
+        gridZ.push(zCurve);
+    }}
+
+    const zHorizontalEllipse = matrixFromAxes(xValues, yValues, (x, y) => {{
+        const quadraticForm = (x * x - 2 * rho * x * y + y * y) / (1 - rho * rho);
+        return quadraticForm <= level ? zTouch : null;
+    }});
+
+    const ellipseX = [];
+    const ellipseY = [];
+    const ellipseZ = [];
+    for (const theta of thetaValues) {{
+        const a = Math.sqrt(level) * Math.cos(theta);
+        const b = Math.sqrt(level) * Math.sin(theta);
+        ellipseX.push(a);
+        ellipseY.push(rho * a + sqrtOneMinusRhoSquared * b);
+        ellipseZ.push(zTouch);
+    }}
+
+    const yRegression = xLineValues.map((x) => rho * x);
+    const zRegression3d = xLineValues.map((x, index) => (
+        showSlices
+            ? Math.min(density(rho, x, yRegression[index]), zTouch)
+            : density(rho, x, yRegression[index])
+    ));
+    const regression2d = lineSegment(rho, [1, rho], level, zTouch);
+    const identity2d = lineSegment(rho, [1, 1], level, zTouch);
+
+    return {{
+        x: [
+            xGrid,
+            xWall,
+            [xPlane, xPlane],
+            [xPlane, xPlane],
+            [xPlane, xPlane],
+            [xPlane, xPlane],
+            xWallDensity,
+            ...gridX,
+            xGrid,
+            ellipseX,
+            xLineValues,
+            regression2d[0],
+            identity2d[0],
+        ],
+        y: [
+            yGrid,
+            yWall,
+            [-3, 3],
+            [-3, 3],
+            [-3, -3],
+            [3, 3],
+            yPlaneValues,
+            ...gridY,
+            yGrid,
+            ellipseY,
+            yRegression,
+            regression2d[1],
+            identity2d[1],
+        ],
+        z: [
+            zCap,
+            zWall,
+            [0, 0],
+            [zTouch, zTouch],
+            [0, zTouch],
+            [0, zTouch],
+            zWallDensity,
+            ...gridZ,
+            zHorizontalEllipse,
+            ellipseZ,
+            zRegression3d,
+            regression2d[2],
+            identity2d[2],
+        ],
+        visible: [
+            true,
+            showSlices,
+            showSlices,
+            showSlices,
+            showSlices,
+            showSlices,
+            showSlices,
+            ...gridValues.map(() => true),
+            ...gridValues.map(() => true),
+            showSlices,
+            showSlices,
+            true,
+            showSlices,
+            showSlices,
+        ],
+    }};
+}}
+
+function applyCurrentSlice() {{
+    const plotElement = document.getElementById('{{plot_id}}');
+    Plotly.restyle(
+        plotElement,
+        buildTraceUpdate(rhoValues[rhoIndex], xPlaneValues[xPlaneIndex]),
+        traceIndices
+    );
+    Plotly.relayout(plotElement, {{
+        'annotations[0].text': rtmText(),
+    }});
+}}
+
+document.getElementById('{{plot_id}}').on('plotly_sliderchange', function(event) {{
+    const prefix = event.slider.currentvalue.prefix;
+    if (prefix === 'rho = ' || prefix === 'ρ = ') {{
+        rhoIndex = event.step.args[0];
+    }} else if (prefix === 'x_plane = ' || prefix === 'cut-off point = ') {{
+        xPlaneIndex = event.step.args[0];
+    }}
+    applyCurrentSlice();
+}});
+
+document.getElementById('{{plot_id}}').on('plotly_buttonclicked', function(event) {{
+    if (event.button && event.button.args && event.button.args.length > 0) {{
+        showSlices = event.button.args[0];
+        applyCurrentSlice();
+    }}
+}});
+"""
 
 fig.update_layout(
     scene=dict(
         xaxis=dict(showbackground=False),
         yaxis=dict(showbackground=False),
-        zaxis=dict(showbackground=True),
+        zaxis=dict(showbackground=True, range=[0, 0.4]),
     ),
     sliders=[
         dict(
+            active=int(np.argmin(np.abs(rho_values - rho))),
+            currentvalue={"prefix": "ρ = "},
+            pad={"b": 10},
+            x=0.12,
+            y=1.25,
+            len=0.76,
+            steps=rho_steps,
+        ),
+        dict(
             active=int(np.argmin(np.abs(x_plane_values - x_plane))),
-            currentvalue={"prefix": "x_plane = "},
+            currentvalue={"prefix": "cut-off point = "},
             pad={"t": 30},
-            steps=slider_steps,
+            x=0.12,
+            y=0,
+            len=0.76,
+            steps=x_plane_steps,
+        ),
+    ],
+    updatemenus=[
+        dict(
+            type="buttons",
+            direction="right",
+            active=0,
+            x=0.82,
+            y=1.25,
+            buttons=[
+                dict(
+                    label="Slices an",
+                    method="skip",
+                    args=[True],
+                ),
+                dict(
+                    label="Slices aus",
+                    method="skip",
+                    args=[False],
+                ),
+            ],
         )
-    ]
+    ],
+    annotations=[
+        dict(
+            text=rtm_label(rho, x_plane),
+            x=0.95,
+            y=0.7,
+            xref="paper",
+            yref="paper",
+            showarrow=False,
+            align="left",
+            font=dict(size=16, color="#111111"),
+            bgcolor="rgba(255,255,255,0.8)",
+            bordercolor="#111111",
+            borderwidth=1,
+            borderpad=6,
+        )
+    ],
+    margin=dict(t=110),
 )
 output_path = Path("public/index.html")
 output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -336,5 +642,6 @@ fig.write_html(
     include_plotlyjs=True,
     full_html=True,
     config={"responsive": True},
+    post_script=slider_script,
 )
 print(f"Wrote static site to {output_path}")
