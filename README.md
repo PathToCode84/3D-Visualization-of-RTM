@@ -1,5 +1,5 @@
 # 3D-Visualization-of-RTM
-Is the main purpose of this repository. Look at www.sofiajust.com to look at the 3D plot of RTM. It's interactive :)
+Is the main purpose of this repository. Look at www.rtm.sofiajust.com to look at the 3D plot of RTM. It's interactive :)
 
 But it includes other code that I use in my bachelor thesis as well.
 * The first other code file is an illustration of RTM on a group level in R
