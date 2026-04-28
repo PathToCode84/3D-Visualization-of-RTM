@@ -5,11 +5,12 @@ import math
 import numpy as np
 import plotly.graph_objects as go
 
-rho = 0.5
-x_plane = 1.5 # where does plane cut
+# default values
+rho = 0.5 
+x_plane = 1.5 # = cut-off points
+# range of x_plane and rho
 x_plane_values = np.linspace(0, 3, 25)
 rho_values = np.linspace(-0.9, 0.9, 19)
-# where 0.18377 is maximum
 
 # Grid
 resolution = 200
@@ -17,10 +18,12 @@ x = np.linspace(-3, 3, resolution)
 y = np.linspace(-3, 3, resolution)
 X, Y = np.meshgrid(x, y)
 
+# set of angles around circle
 theta = np.linspace(0, 2 * np.pi, 240)
+
 x_line = np.linspace(-3, 3, 240)
 
-# Vertical plane at x = x_plane
+# Coords for Vertical plane/ Wall at x = x_plane
 y_plane = np.linspace(-3, 3, 60)
 z_plane_base = np.linspace(0, 1, 60)
 Y_plane, Z_plane_base = np.meshgrid(y_plane, z_plane_base)
@@ -33,6 +36,7 @@ wall_width = 5
 
 
 def density(rho_value, x_values, y_values):
+    # just standard normal density
     normalizing_constant = 1 / (2 * np.pi * np.sqrt(1 - rho_value**2))
     return normalizing_constant * np.exp(
         -(x_values**2 - 2 * rho_value * x_values * y_values + y_values**2)
@@ -46,6 +50,7 @@ def normal_pdf(value):
 
 def normal_cdf(value):
     return 0.5 * (1 + math.erf(value / math.sqrt(2)))
+# expressed through erf (error fct) since cdf has no closed form solution (just tabulated)
 
 
 def rtm_effect(rho_value, x_plane_value):
@@ -76,7 +81,7 @@ def rho_geometry(rho_value):
         "y_regression": rho_value * x_line,
     }
 
-
+# makes sure that regression 2d and indentity 2d are contained in ellipse
 def line_segment(direction, level, z_value, sigma_inv):
     direction = np.asarray(direction, dtype=float)
     quad_scalar = direction @ sigma_inv @ direction
@@ -91,19 +96,22 @@ def slice_data(rho_value, x_plane_value):
     # The wall touches the highest density at y = rho * x_plane.
     z_touch = normalizing_constant * np.exp(-(x_plane_value**2) / 2)
     level = x_plane_value**2
-    # Cap the surface at the slice height to avoid triangulation spikes.
+    # Cap the surface at the slice height = ellipse slice
     z_cap = np.minimum(geometry["z"], z_touch)
 
     z_wall = z_touch * Z_plane_base
     x_wall = np.full_like(Y_plane, x_plane_value)
     x_wall_density = np.full_like(y_plane, x_plane_value)
     z_wall_density = density(rho_value, x_plane_value, y_plane)
+    # <= for "filled" ellipse
     z_horizontal_ellipse = np.where(geometry["quadratic_form"] <= level, z_touch, np.nan)
 
     ellipse_xy = (
         geometry["eigenvectors"]
         @ np.diag(np.sqrt(level * geometry["eigenvalues"]))
         @ np.vstack((np.cos(theta), np.sin(theta)))
+        # stacks arrays vertically (@ matrix mult) to make unit circle
+        # the mult with the upper matrix stretches circle to ellipse
     )
     ellipse_x = ellipse_xy[0]
     ellipse_y = ellipse_xy[1]
@@ -171,7 +179,7 @@ def bell_grid_lines(rho_value, z_touch):
 
     return x_lines, y_lines, z_lines
 
-
+# converts np data structure to py obj
 def json_ready(value):
     if isinstance(value, dict):
         return {key: json_ready(item) for key, item in value.items()}
@@ -189,6 +197,7 @@ def json_ready(value):
 def wall_traces(x_plane_value, z_touch, z_wall):
     return [
         go.Surface(
+            # wall surface
             x=np.full_like(Y_plane, x_plane_value), y=Y_plane, z=z_wall,
             opacity=0.75,
             showscale=False,
@@ -196,24 +205,28 @@ def wall_traces(x_plane_value, z_touch, z_wall):
             name="wall"
         ),
         go.Scatter3d(
+            # line on bottom edge of wall
             x=[x_plane_value, x_plane_value], y=[-3, 3], z=[0, 0],
             mode="lines",
             line=dict(color=wall_color, width=wall_width),
             showlegend=False
         ),
         go.Scatter3d(
+            # line on top edge of wall
             x=[x_plane_value, x_plane_value], y=[-3, 3], z=[z_touch, z_touch],
             mode="lines",
             line=dict(color=wall_color, width=wall_width),
             showlegend=False
         ),
         go.Scatter3d(
+            # line on left edge of wall
             x=[x_plane_value, x_plane_value], y=[-3, -3], z=[0, z_touch],
             mode="lines",
             line=dict(color=wall_color, width=wall_width),
             showlegend=False
         ),
         go.Scatter3d(
+            # line on right edge of wall
             x=[x_plane_value, x_plane_value], y=[3, 3], z=[0, z_touch],
             mode="lines",
             line=dict(color=wall_color, width=wall_width),
@@ -223,9 +236,9 @@ def wall_traces(x_plane_value, z_touch, z_wall):
 
 initial_slice = slice_data(rho, x_plane)
 
-# Surface
+# Surface of density (THE bell curve)
 fig.add_trace(
-    go.Surface(x=X, y=Y, z=initial_slice["z_cap"], opacity=1, #change to z=Z for full bell
+    go.Surface(x=X, y=Y, z=initial_slice["z_cap"], opacity=1, 
     colorscale="Teal", showscale=False,
     lighting=dict(ambient=0.7, diffuse=0.9, specular=0.2, roughness=0.8),
     lightposition=dict(x=100, y=200, z=300),
@@ -245,9 +258,11 @@ fig.add_trace(
 # jet .. obnoxious 2000
 # pubu, purp ... maybe too light?
 
+# draw entire wall
 for trace in wall_traces(x_plane, initial_slice["z_touch"], initial_slice["z_wall"]):
     fig.add_trace(trace)
 
+# draw 2d density on the wall f(y|X = x_plane)
 fig.add_trace(go.Scatter3d(
     x=initial_slice["x_wall_density"],
     y=y_plane,
@@ -258,6 +273,7 @@ fig.add_trace(go.Scatter3d(
     showlegend=False
 ))
 
+# draw grid
 initial_grid_x, initial_grid_y, initial_grid_z = bell_grid_lines(rho, initial_slice["z_touch"])
 for x_curve, y_curve, z_curve in zip(initial_grid_x, initial_grid_y, initial_grid_z):
     fig.add_trace(go.Scatter3d(
@@ -269,7 +285,7 @@ for x_curve, y_curve, z_curve in zip(initial_grid_x, initial_grid_y, initial_gri
     ))
 
 
-# beheading
+# draw ellipse slice
 fig.add_trace(go.Surface(
     x=X, y=Y, z=initial_slice["z_horizontal_ellipse"],
     opacity=0.75,
@@ -278,7 +294,7 @@ fig.add_trace(go.Surface(
     name="ellipse"
 ))
 
-# contour line (of ellipse) at the slice height
+# draw contour line (of ellipse) at the slice height
 fig.add_trace(go.Scatter3d(
     x=initial_slice["ellipse_x"], y=initial_slice["ellipse_y"], z=initial_slice["ellipse_z"],
     mode="lines",
@@ -315,6 +331,7 @@ fig.add_trace(go.Scatter3d(
     showlegend=False
 ))
 
+# make each trace "callable"
 trace_indices = list(range(0, 7 + len(initial_grid_x))) + [
     7 + len(initial_grid_x),
     8 + len(initial_grid_x),
@@ -327,11 +344,12 @@ x_plane_steps = []
 for x_plane_index, x_plane_value in enumerate(x_plane_values):
     x_plane_steps.append(
         dict(
-            method="skip",
+            method="skip", # = don't auto update (js does)
             args=[x_plane_index],
             label=f"{x_plane_value:.2f}",
         )
     )
+# produced elements like {"method": "skip", "args": [0], "label": "0.00"} for js
 
 rho_steps = []
 for rho_index, rho_value in enumerate(rho_values):
@@ -344,6 +362,14 @@ for rho_index, rho_value in enumerate(rho_values):
     )
 
 slider_script = f"""
+// here starts java script code - use js comments not hastag
+
+// inside curly prackets you can put py things 
+// json.ready converts np data strucute to py obj
+// json.dumps converts py obj to json string
+// this way py vars get to js scrips
+
+
 const traceIndices = {json.dumps(trace_indices)};
 const xValues = {json.dumps(json_ready(x))};
 const yValues = {json.dumps(json_ready(y))};
@@ -357,6 +383,9 @@ const xPlaneValues = {json.dumps(json_ready(x_plane_values))};
 let rhoIndex = {int(np.argmin(np.abs(rho_values - rho)))};
 let xPlaneIndex = {int(np.argmin(np.abs(x_plane_values - x_plane)))};
 let showSlices = true;
+
+
+// all necessary to contiously compute RTM
 
 function density(rho, x, y) {{
     const normalizingConstant = 1 / (2 * Math.PI * Math.sqrt(1 - rho * rho));
@@ -390,23 +419,28 @@ function rtmText() {{
 }}
 
 function matrixFromAxes(xAxis, yAxis, fn) {{
+    // => is short way to write a fct
     return yAxis.map((y) => xAxis.map((x) => fn(x, y)));
+    // .map takes an array applies fct and returns res array
 }}
 
 function lineSegment(rho, direction, level, zValue) {{
     const dx = direction[0];
     const dy = direction[1];
     const quadScalar = (dx * dx - 2 * rho * dx * dy + dy * dy) / (1 - rho * rho);
+    // is the "end" of ellipse
     const extent = Math.sqrt(level / quadScalar);
     return [
         [-extent * dx, extent * dx],
         [-extent * dy, extent * dy],
         [zValue, zValue],
     ];
+    // makes sure that regression 2d and indentity 2d are contained in ellipse
 }}
 
 function buildTraceUpdate(rho, xPlane) {{
     const normalizingConstant = 1 / (2 * Math.PI * Math.sqrt(1 - rho * rho));
+    //density value of (x, rho x)
     const zTouch = normalizingConstant * Math.exp(-(xPlane * xPlane) / 2);
     const level = xPlane * xPlane;
     const sqrtOneMinusRhoSquared = Math.sqrt(1 - rho * rho);
@@ -449,6 +483,7 @@ function buildTraceUpdate(rho, xPlane) {{
         gridY.push(yCurve);
         gridZ.push(zCurve);
     }}
+    // that was for the black grid on density curve
 
     const zHorizontalEllipse = matrixFromAxes(xValues, yValues, (x, y) => {{
         const quadraticForm = (x * x - 2 * rho * x * y + y * y) / (1 - rho * rho);
@@ -475,6 +510,7 @@ function buildTraceUpdate(rho, xPlane) {{
     const regression2d = lineSegment(rho, [1, rho], level, zTouch);
     const identity2d = lineSegment(rho, [1, 1], level, zTouch);
 
+    // give to plotly
     return {{
         x: [
             xGrid,
@@ -540,6 +576,7 @@ function buildTraceUpdate(rho, xPlane) {{
     }};
 }}
 
+// redraw
 function applyCurrentSlice() {{
     const plotElement = document.getElementById('{{plot_id}}');
     Plotly.restyle(
@@ -547,11 +584,14 @@ function applyCurrentSlice() {{
         buildTraceUpdate(rhoValues[rhoIndex], xPlaneValues[xPlaneIndex]),
         traceIndices
     );
+
+    // add rtm annotation
     Plotly.relayout(plotElement, {{
         'annotations[0].text': rtmText(),
     }});
 }}
 
+// listen for slider change
 document.getElementById('{{plot_id}}').on('plotly_sliderchange', function(event) {{
     const prefix = event.slider.currentvalue.prefix;
     if (prefix === 'rho = ' || prefix === 'ρ = ') {{
@@ -559,9 +599,11 @@ document.getElementById('{{plot_id}}').on('plotly_sliderchange', function(event)
     }} else if (prefix === 'x_plane = ' || prefix === 'cut-off point = ') {{
         xPlaneIndex = event.step.args[0];
     }}
+    // redraw
     applyCurrentSlice();
 }});
 
+//button to turn of slices
 document.getElementById('{{plot_id}}').on('plotly_buttonclicked', function(event) {{
     if (event.button && event.button.args && event.button.args.length > 0) {{
         showSlices = event.button.args[0];
@@ -574,7 +616,7 @@ fig.update_layout(
     scene=dict(
         xaxis=dict(showbackground=False),
         yaxis=dict(showbackground=False),
-        zaxis=dict(showbackground=True, range=[0, 0.4]),
+        zaxis=dict(showbackground=True, range=[0, 0.4]), # fix "height" of plot (no auto rescaling)
     ),
     sliders=[
         dict(
@@ -601,7 +643,7 @@ fig.update_layout(
             type="buttons",
             direction="right",
             active=0,
-            x=0.82,
+            x=0.88,
             y=1.25,
             buttons=[
                 dict(
@@ -617,6 +659,7 @@ fig.update_layout(
             ],
         )
     ],
+    # just text field
     annotations=[
         dict(
             text=rtm_label(rho, x_plane),
@@ -633,15 +676,17 @@ fig.update_layout(
             borderpad=6,
         )
     ],
-    margin=dict(t=110),
+    margin=dict(t=110), # in pixels
 )
 output_path = Path("public/index.html")
 output_path.parent.mkdir(parents=True, exist_ok=True)
+
+
 fig.write_html(
     output_path,
     include_plotlyjs=True,
     full_html=True,
     config={"responsive": True},
-    post_script=slider_script,
+    post_script=slider_script, # give java script to plotly
 )
 print(f"Wrote static site to {output_path}")
