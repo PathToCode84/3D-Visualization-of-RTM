@@ -2,14 +2,15 @@
 # This code builds an interactive 3d representation of regression 
 # toward the mean with the help of plotly
 
-# To view plot locally, run this code and open up the index.html 
+# To view the plot locally, run this code and open up the index.html 
 # file that it creates
 
 # The interactive graphic is deployed at 
-# https://threed-visualization-of-rtm.onrender.com
+# https://rtm.sofiajust.com
 
 # The code for this project (incl. requirements and deployment spec-
-# ific files (render)) can also be found on github (not anonymous)
+# ific files (render)) can also be found on github 
+# https://github.com/PathToCode84/3D-Visualization-of-RTM
 ####################################################################
 
 from pathlib import Path
@@ -630,7 +631,12 @@ fig.update_layout(
     scene=dict(
         xaxis=dict(showbackground=False),
         yaxis=dict(showbackground=False),
-        zaxis=dict(showbackground=True, range=[0, 0.4]), # fix "height" of plot (no auto rescaling)
+        zaxis=dict(showbackground=True, range=[0, 0.2]), # fix "height" of plot (no auto rescaling)
+        # change the camera angle to get a better view of the 3d plot at first view
+        camera=dict(
+            eye=dict(x=-0.5, y=-1.5, z=0.5),
+            center=dict(x=0, y=0, z=-0.3)
+        ),
     ),
     sliders=[
         dict(
@@ -644,7 +650,7 @@ fig.update_layout(
         ),
         dict(
             active=int(np.argmin(np.abs(x_plane_values - x_plane))),
-            currentvalue={"prefix": "cut-off point = "},
+            currentvalue={"prefix": "cutoff point = "},
             pad={"t": 30},
             x=0.12,
             y=0,
